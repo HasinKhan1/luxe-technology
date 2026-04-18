@@ -198,6 +198,9 @@ button{font-family:var(--font-b);cursor:pointer;border:none;background:none;-web
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent)}
 .form-input::placeholder,.form-textarea::placeholder{color:var(--muted)}
 .form-textarea{height:140px;resize:vertical;line-height:1.7}
+.form-input.error,.form-select.error,.form-textarea.error{border-color:#C0392B}
+.form-error{display:none;font-size:11px;color:#C0392B;margin-top:6px;letter-spacing:.02em}
+.form-error.visible{display:block}
 .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C7B6B' stroke-width='1' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
 .contact-info{padding-top:8px}
 .contact-info-item{padding:28px 0;border-bottom:1px solid var(--border)}
@@ -1641,22 +1644,25 @@ button{font-family:var(--font-b);cursor:pointer;border:none;background:none;-web
 
       <div class="contact-grid">
         <div class="contact-form-wrap reveal">
-          <form onsubmit="handleFormSubmit(event)">
+          <form id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
             <div class="form-group">
               <label class="form-label" for="name">Your name</label>
-              <input class="form-input" type="text" id="name" name="name" placeholder="James Hartley" required/>
+              <input class="form-input" type="text" id="name" name="name" placeholder="" autocomplete="name" required minlength="2"/>
+              <span class="form-error" id="name-error">Please enter your full name.</span>
             </div>
             <div class="form-group">
               <label class="form-label" for="email">Email address</label>
-              <input class="form-input" type="email" id="email" name="email" placeholder="james@studio.co.uk" required/>
+              <input class="form-input" type="email" id="email" name="email" placeholder="" autocomplete="email" required/>
+              <span class="form-error" id="email-error">Please enter a valid email address.</span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="phone">Phone number</label>
-              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+44 7700 000000"/>
+              <label class="form-label" for="phone">Phone number <span style="color:var(--muted);font-size:9px;letter-spacing:.06em">(optional)</span></label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="" autocomplete="tel" pattern="^[\+\d\s\(\)\-]{7,20}$"/>
+              <span class="form-error" id="phone-error">Please enter a valid phone number.</span>
             </div>
             <div class="form-group">
               <label class="form-label" for="type">I am a</label>
-              <select class="form-select" id="type" name="type">
+              <select class="form-select" id="type" name="type" required>
                 <option value="">Select one</option>
                 <option>Homeowner</option>
                 <option>Architect</option>
@@ -1664,6 +1670,7 @@ button{font-family:var(--font-b);cursor:pointer;border:none;background:none;-web
                 <option>Project manager</option>
                 <option>Developer</option>
               </select>
+              <span class="form-error" id="type-error">Please tell us who you are.</span>
             </div>
             <div class="form-group">
               <label class="form-label" for="service">Primary interest</label>
@@ -1680,9 +1687,10 @@ button{font-family:var(--font-b);cursor:pointer;border:none;background:none;-web
             </div>
             <div class="form-group">
               <label class="form-label" for="message">Tell us about your project</label>
-              <textarea class="form-textarea" id="message" name="message" placeholder="Brief description of the property, project stage, and what you're hoping to achieve..."></textarea>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Brief description of the property, project stage, and what you're hoping to achieve..." minlength="10"></textarea>
+              <span class="form-error" id="message-error">Please tell us a little about your project (at least 10 characters).</span>
             </div>
-            <button class="btn btn-dark" type="submit" style="width:100%;text-align:center;display:block">Send enquiry</button>
+            <button class="btn btn-dark" type="submit" id="submitBtn" style="width:100%;text-align:center;display:flex;align-items:center;justify-content:center;min-height:52px">Send enquiry</button>
             <p style="font-size:11px;color:var(--muted);margin-top:14px;letter-spacing:.04em">We respond within one working day. No obligation, no sales pressure.</p>
           </form>
         </div>
@@ -1690,15 +1698,15 @@ button{font-family:var(--font-b);cursor:pointer;border:none;background:none;-web
         <div class="contact-info reveal reveal-delay-1">
           <div class="contact-info-item">
             <span class="contact-info-label">Phone</span>
-            <span class="contact-info-val">+44 (0)20 7000 0000</span>
+            <span class="contact-info-val">+44 (0)20 3432 8301</span>
           </div>
           <div class="contact-info-item">
             <span class="contact-info-label">Email</span>
-            <span class="contact-info-val">hello@luxetechnology.co.uk</span>
+            <a class="contact-info-val" href="mailto:hello@luxetechnology.co.uk" style="color:var(--dark);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;transition:opacity .2s">hello@luxetechnology.co.uk</a>
           </div>
           <div class="contact-info-item">
             <span class="contact-info-label">Office</span>
-            <span class="contact-info-val">London, United Kingdom</span>
+            <span class="contact-info-val">Luxe Technology, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ</span>
           </div>
           <div class="contact-info-item">
             <span class="contact-info-label">Response time</span>
@@ -1833,15 +1841,132 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ── FORM HANDLER ──
+// ── FORM VALIDATION & SUBMISSION ──
+function clearError(id) {
+  const el = document.getElementById(id);
+  if (el) { el.classList.remove('error'); }
+  const err = document.getElementById(id + '-error');
+  if (err) err.classList.remove('visible');
+}
+
+function showError(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('error');
+  const err = document.getElementById(id + '-error');
+  if (err) err.classList.add('visible');
+}
+
+function validateEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+}
+
+function validatePhone(v) {
+  if (!v.trim()) return true; // optional
+  return /^[\+\d\s\(\)\-]{7,20}$/.test(v.trim());
+}
+
+// Clear errors on input
+['name','email','phone','type','message'].forEach(function(id) {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', function() { clearError(id); });
+  if (el) el.addEventListener('change', function() { clearError(id); });
+});
+
 function handleFormSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"], .cta-submit');
-  const orig = btn ? btn.textContent : '';
-  if (btn) { btn.textContent = 'Message sent — thank you.'; btn.style.background = '#C4A882'; btn.style.borderColor = '#C4A882'; btn.style.color = '#1A1A1A'; }
-  setTimeout(() => {
-    if (btn) { btn.textContent = orig; btn.style.background = ''; btn.style.borderColor = ''; btn.style.color = ''; }
-    e.target.reset();
-  }, 3500);
+  const form = e.target;
+
+  // Only validate the contact page form (has id="contactForm")
+  if (form.id !== 'contactForm') {
+    // CTA mini-form — just show success
+    const btn = form.querySelector('.cta-submit');
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = 'Message sent — thank you.';
+      btn.style.background = '#C4A882';
+      btn.style.borderColor = '#C4A882';
+      btn.style.color = '#1A1A1A';
+      setTimeout(function() {
+        btn.textContent = orig;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        form.reset();
+      }, 3500);
+    }
+    return;
+  }
+
+  // ── Full contact form validation ──
+  let valid = true;
+
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+  const type = document.getElementById('type');
+  const message = document.getElementById('message');
+
+  // Name: required, at least 2 chars
+  if (!name.value.trim() || name.value.trim().length < 2) {
+    showError('name'); valid = false;
+  } else { clearError('name'); }
+
+  // Email: required, valid format
+  if (!validateEmail(email.value)) {
+    showError('email'); valid = false;
+  } else { clearError('email'); }
+
+  // Phone: optional but must be valid format if entered
+  if (!validatePhone(phone.value)) {
+    showError('phone'); valid = false;
+  } else { clearError('phone'); }
+
+  // Type: required selection
+  if (!type.value) {
+    showError('type'); valid = false;
+  } else { clearError('type'); }
+
+  // Message: optional but if entered must be meaningful length
+  if (message.value.trim().length > 0 && message.value.trim().length < 10) {
+    showError('message'); valid = false;
+  } else { clearError('message'); }
+
+  if (!valid) {
+    // Scroll to first error
+    const firstError = form.querySelector('.error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // ── Build and open mailto ──
+  const to = 'hello@luxetechnology.co.uk';
+  const subject = encodeURIComponent('Website enquiry — ' + (type.value || 'General') + ' — ' + name.value.trim());
+  const body = encodeURIComponent(
+    'Name: ' + name.value.trim() + '\r\n' +
+    'Email: ' + email.value.trim() + '\r\n' +
+    'Phone: ' + (phone.value.trim() || 'Not provided') + '\r\n' +
+    'I am a: ' + (type.value || 'Not specified') + '\r\n' +
+    'Primary interest: ' + (document.getElementById('service') ? document.getElementById('service').value || 'Not specified' : 'N/A') + '\r\n\r\n' +
+    'Message:\r\n' + (message.value.trim() || 'No message provided')
+  );
+
+  window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+
+  // Show success state
+  const btn = document.getElementById('submitBtn');
+  if (btn) {
+    btn.textContent = 'Opening your email app...';
+    btn.style.background = '#C4A882';
+    btn.style.borderColor = '#C4A882';
+    btn.style.color = '#1A1A1A';
+    setTimeout(function() {
+      btn.textContent = 'Send enquiry';
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      form.reset();
+    }, 4000);
+  }
 }
 
 // Init
