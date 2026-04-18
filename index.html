@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Luxe Technology | Smart Home Automation London</title>
+<meta name="description" content="Luxe Technology designs and installs smart home automation systems for London's finest properties. Lighting, audio, cinema, networking — one seamless system."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:       #FAFAF8;
+  --surface:  #F0EDE8;
+  --dark:     #1A1A1A;
+  --slate:    #2C2C2A;
+  --accent:   #C4A882;
+  --muted:    #8C7B6B;
+  --body-txt: #3D3A36;
+  --border:   rgba(196,168,130,0.2);
+  --font-d:   'Cormorant Garamond', Georgia, serif;
+  --font-b:   'DM Sans', Helvetica, sans-serif;
+  --ease:     cubic-bezier(0.25,0,0,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--body-txt);font-family:var(--font-b);font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:var(--font-b);cursor:pointer;border:none;background:none}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 0;background:rgba(250,250,248,0.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding .3s var(--ease)}
+.nav.scrolled{padding:14px 0}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{font-family:var(--font-d);font-size:20px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--dark);cursor:pointer;transition:opacity .2s}
+.nav-logo:hover{opacity:.7}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--dark)}
+.nav-cta{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 28px;background:var(--dark);color:var(--bg);border:1px solid var(--dark);transition:background .2s,color .2s;cursor:pointer}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);color:var(--dark)}
+.nav-mobile-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-mobile-btn span{display:block;width:22px;height:1px;background:var(--dark);transition:transform .3s,opacity .3s}
+.nav-mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:190;padding:100px 48px 48px;flex-direction:column;gap:0}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{font-family:var(--font-d);font-size:36px;font-weight:300;color:var(--dark);padding:16px 0;border-bottom:1px solid var(--border);cursor:pointer}
+
+/* ── WRAPPERS ── */
+.wrap{max-width:1240px;margin:0 auto;padding:0 48px}
+.wrap-narrow{max-width:700px;margin:0 auto;padding:0 48px}
+
+/* ── TYPE ── */
+.eyebrow{display:block;font-family:var(--font-b);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.h-display{font-family:var(--font-d);font-size:clamp(44px,5.5vw,76px);font-weight:300;line-height:1.05;letter-spacing:-.01em;color:var(--dark)}
+.h-section{font-family:var(--font-d);font-size:clamp(32px,3.5vw,52px);font-weight:300;line-height:1.12;color:var(--dark)}
+.h-card{font-family:var(--font-d);font-size:22px;font-weight:400;line-height:1.3;color:var(--dark);margin-bottom:8px}
+.subhead{font-size:17px;font-weight:300;color:var(--muted);line-height:1.8;max-width:580px}
+.body-sm{font-size:15px;line-height:1.8;color:var(--body-txt)}
+.caption{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-block;font-family:var(--font-b);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:15px 36px;border-radius:0;transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+.btn-dark{background:var(--dark);color:var(--bg);border:1px solid var(--dark)}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent);color:var(--dark)}
+.btn-outline{background:transparent;color:var(--dark);border:1px solid var(--dark)}
+.btn-outline:hover{background:var(--dark);color:var(--bg)}
+.btn-accent{background:var(--accent);color:var(--dark);border:1px solid var(--accent)}
+.btn-accent:hover{background:var(--bg);border-color:var(--dark);color:var(--dark)}
+.btn-light{background:var(--bg);color:var(--dark);border:1px solid var(--bg)}
+.btn-light:hover{background:var(--accent);border-color:var(--accent)}
+
+/* ── ACCENT LINE ── */
+.accent-line{width:48px;height:1px;background:var(--accent);display:block;margin-bottom:24px}
+
+/* ── DIVIDER ── */
+.divider{width:100%;height:1px;background:var(--border);margin:0}
+
+/* ── SECTIONS ── */
+.section{padding:100px 0}
+.section-sm{padding:60px 0}
+.section-dark{background:var(--slate)}
+.section-surface{background:var(--surface)}
+
+/* ═══════════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════════ */
+/* Hero */
+.hero{padding-top:160px;padding-bottom:120px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border:1px solid rgba(196,168,130,.08);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;right:5%;width:300px;height:300px;border:1px solid rgba(196,168,130,.06);border-radius:50%;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-content{animation:fadeUp .9s var(--ease) both}
+.hero-headline{margin-bottom:28px}
+.hero-headline em{font-style:italic;color:var(--muted)}
+.hero-sub{margin-bottom:44px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.hero-visual{position:relative;animation:fadeUp .9s .15s var(--ease) both}
+.hero-img{width:100%;aspect-ratio:4/5;background:#1C1A17;position:relative;overflow:hidden}
+.hero-img::after{content:'';position:absolute;bottom:-28px;right:-28px;width:55%;height:55%;border:1px solid var(--accent);pointer-events:none;z-index:-1}
+.hero-img-label{position:absolute;bottom:24px;left:24px;font-family:var(--font-d);font-size:13px;font-weight:300;font-style:italic;color:rgba(250,250,248,.7);letter-spacing:.04em}
+
+/* Stats bar */
+.stats-bar{padding:44px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px}
+.stat-item{text-align:center;flex:1;min-width:120px}
+.stat-num{font-family:var(--font-d);font-size:40px;font-weight:300;color:var(--dark);display:block;line-height:1;margin-bottom:6px}
+.stat-label{font-size:10px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Services grid home */
+.services-home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:60px}
+.svc-card{background:var(--bg);padding:40px 36px;position:relative;cursor:pointer;transition:background .25s}
+.svc-card:hover{background:var(--surface)}
+.svc-card::before{content:'';display:block;width:40px;height:1px;background:var(--accent);margin-bottom:28px}
+.svc-num{font-family:var(--font-d);font-size:48px;font-weight:300;color:rgba(196,168,130,.25);line-height:1;display:block;margin-bottom:16px}
+.svc-title{font-family:var(--font-d);font-size:20px;font-weight:400;color:var(--dark);margin-bottom:12px;line-height:1.3}
+.svc-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px}
+.svc-link{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.svc-card:hover .svc-link{gap:12px}
+
+/* Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.testi-card{background:var(--bg);padding:40px;border:1px solid var(--border);transition:border-color .3s,transform .3s}
+.testi-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.testi-mark{font-family:var(--font-d);font-size:80px;font-weight:300;color:var(--accent);line-height:.5;display:block;margin-bottom:24px;opacity:.4}
+.testi-text{font-family:var(--font-d);font-size:17px;font-weight:300;font-style:italic;line-height:1.75;color:var(--dark);margin-bottom:24px}
+.testi-divider{width:32px;height:1px;background:var(--accent);margin-bottom:20px}
+.testi-name{font-size:13px;font-weight:500;color:var(--dark);display:block;margin-bottom:2px}
+.testi-role{font-size:11px;color:var(--muted);letter-spacing:.04em}
+
+/* CTA dark */
+.cta-dark{padding:100px 0;background:var(--slate);position:relative;overflow:hidden}
+.cta-dark::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border:1px solid rgba(196,168,130,.07);border-radius:50%;pointer-events:none}
+.cta-dark-inner{position:relative;z-index:1}
+.cta-h{font-family:var(--font-d);font-size:clamp(32px,4vw,56px);font-weight:300;line-height:1.12;color:var(--bg);margin-bottom:20px;max-width:580px}
+.cta-sub{font-size:16px;font-weight:300;color:rgba(250,250,248,.55);max-width:460px;line-height:1.8;margin-bottom:48px}
+.cta-form{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.cta-input{flex:1;min-width:240px;height:52px;background:rgba(250,250,248,.07);border:1px solid rgba(250,250,248,.18);padding:0 20px;font-family:var(--font-b);font-size:15px;color:var(--bg);outline:none;transition:border-color .2s;border-radius:0}
+.cta-input::placeholder{color:rgba(250,250,248,.3)}
+.cta-input:focus{border-color:var(--accent)}
+.cta-submit{height:52px;padding:0 36px;background:var(--accent);color:var(--dark);font-family:var(--font-b);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--accent);cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;border-radius:0}
+.cta-submit:hover{background:var(--bg);border-color:var(--bg)}
+.cta-micro{font-size:11px;color:rgba(250,250,248,.3);letter-spacing:.04em}
+
+/* ═══════════════════════════════════════
+   SERVICE DETAIL PAGES
+═══════════════════════════════════════ */
+.service-hero{padding-top:160px;padding-bottom:80px;background:var(--bg)}
+.service-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.service-hero-img{width:100%;aspect-ratio:3/2;background:#1C1A17;position:relative;overflow:hidden}
+.service-hero-img .img-overlay{position:absolute;inset:0;background:rgba(26,26,26,.12)}
+.service-content-block{padding:80px 0;border-top:1px solid var(--border)}
+.service-content-block:first-child{border-top:none;padding-top:0}
+.service-h2{margin-bottom:24px}
+.service-body{font-size:16px;line-height:1.85;color:var(--body-txt);max-width:620px}
+.service-body p{margin-bottom:20px}
+.service-body p:last-child{margin-bottom:0}
+.service-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px}
+.benefit-item{padding:28px;border:1px solid var(--border);background:var(--surface)}
+.benefit-icon{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-bottom:16px}
+.benefit-title{font-family:var(--font-d);font-size:17px;font-weight:400;color:var(--dark);margin-bottom:8px}
+.benefit-text{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ═══════════════════════════════════════
+   ABOUT PAGE
+═══════════════════════════════════════ */
+.about-hero{padding-top:160px;padding-bottom:80px}
+.about-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-block{position:relative}
+.about-img{width:100%;aspect-ratio:3/4;background:#1C1A17;overflow:hidden;position:relative}
+.about-img-accent{position:absolute;top:-24px;left:-24px;width:60%;height:60%;border:1px solid var(--accent);z-index:-1}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:60px;border:1px solid var(--border)}
+.value-card{background:var(--bg);padding:40px 32px}
+.value-num{font-family:var(--font-d);font-size:48px;font-weight:300;color:rgba(196,168,130,.2);line-height:1;margin-bottom:16px;display:block}
+.value-title{font-family:var(--font-d);font-size:20px;font-weight:400;color:var(--dark);margin-bottom:12px}
+.value-text{font-size:14px;color:var(--muted);line-height:1.75}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px}
+.diff-item{padding-top:24px;border-top:1px solid var(--border)}
+.diff-title{font-family:var(--font-d);font-size:19px;font-weight:400;color:var(--dark);margin-bottom:10px}
+.diff-text{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ═══════════════════════════════════════
+   CONTACT PAGE
+═══════════════════════════════════════ */
+.contact-hero{padding-top:160px;padding-bottom:60px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px}
+.contact-form-wrap{padding:48px;background:var(--surface);border:1px solid var(--border)}
+.form-group{margin-bottom:24px}
+.form-label{display:block;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border);padding:14px 18px;font-family:var(--font-b);font-size:15px;color:var(--dark);outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted)}
+.form-textarea{height:140px;resize:vertical;line-height:1.7}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C7B6B' stroke-width='1' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.contact-info{padding-top:8px}
+.contact-info-item{padding:28px 0;border-bottom:1px solid var(--border)}
+.contact-info-item:first-child{padding-top:0}
+.contact-info-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:block}
+.contact-info-val{font-family:var(--font-d);font-size:19px;font-weight:300;color:var(--dark);line-height:1.4}
+.contact-promise{margin-top:40px;padding:28px;background:var(--dark);color:var(--bg)}
+.contact-promise-title{font-family:var(--font-d);font-size:18px;font-weight:300;margin-bottom:8px}
+.contact-promise-text{font-size:13px;color:rgba(250,250,248,.5);line-height:1.75}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.footer{padding:48px 0;background:var(--slate);border-top:1px solid rgba(250,250,248,.06)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-logo{font-family:var(--font-d);font-size:18px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,248,.4);cursor:pointer}
+.footer-links{display:flex;gap:28px;list-style:none}
+.footer-links a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,248,.3);transition:color .2s;cursor:pointer}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{font-size:11px;color:rgba(250,250,248,.2);letter-spacing:.04em}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.32s}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:1024px){
+  .services-home-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .diff-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .wrap,.wrap-narrow{padding:0 24px}
+  .nav-inner{padding:0 24px}
+  .nav-links{display:none}
+  .nav-mobile-btn{display:flex}
+  .nav-mobile-menu a{font-size:28px}
+  .hero-inner,.service-hero-inner,.about-hero-inner,.contact-grid{grid-template-columns:1fr}
+  .hero{padding-top:120px;padding-bottom:80px}
+  .service-hero{padding-top:120px;padding-bottom:60px}
+  .about-hero{padding-top:120px;padding-bottom:60px}
+  .contact-hero{padding-top:120px;padding-bottom:40px}
+  .hero-visual{order:-1}
+  .hero-img,.service-hero-img{aspect-ratio:16/9}
+  .hero-img::after{display:none}
+  .about-img-accent{display:none}
+  .services-home-grid,.testimonials-grid,.values-grid{grid-template-columns:1fr}
+  .service-benefits{grid-template-columns:1fr}
+  .stats-inner{justify-content:center;gap:20px}
+  .stat-item{min-width:calc(50% - 10px)}
+  .section{padding:64px 0}
+  .contact-form-wrap{padding:28px}
+  .cta-form{flex-direction:column}
+  .cta-input,.cta-submit{width:100%;min-width:0}
+  .cta-submit{height:48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <span class="nav-logo" onclick="showPage('home')">Luxe Technology</span>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+      <li><a onclick="showPage('services')" data-page="services">Services</a></li>
+      <li><a onclick="showPage('about')" data-page="about">About</a></li>
+      <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="showPage('contact')">Book a call</button>
+    <div class="nav-mobile-btn" onclick="toggleMenu()" id="menuBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');toggleMenu()">Home</a>
+  <a onclick="showPage('services');toggleMenu()">Services</a>
+  <a onclick="showPage('about');toggleMenu()">About</a>
+  <a onclick="showPage('contact');toggleMenu()">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="eyebrow">London · Smart home specialists · Est. 2012</span>
+          <h1 class="h-display hero-headline">Your home,<br><em>exactly</em> as<br>you imagined it.</h1>
+          <p class="subhead hero-sub">We handle every detail — from the first sketch to the final switch — so your project runs on time, on budget, and without surprises.</p>
+          <div class="hero-btns">
+            <button class="btn btn-dark" onclick="showPage('services')">Explore our services</button>
+            <button class="btn btn-outline" onclick="showPage('contact')">Book a consultation</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-img">
+            <svg width="100%" height="100%" viewBox="0 0 600 750" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Luxury London living room with smart home lighting" role="img">
+              <!-- Sky / warm wall -->
+              <rect width="600" height="750" fill="#E8DDD0"/>
+              <!-- Floor -->
+              <rect x="0" y="540" width="600" height="210" fill="#C8B99A"/>
+              <!-- Floor boards warm oak -->
+              <line x1="0" y1="560" x2="600" y2="560" stroke="#B8A888" stroke-width="1.5"/>
+              <line x1="0" y1="585" x2="600" y2="585" stroke="#B8A888" stroke-width="1"/>
+              <line x1="0" y1="610" x2="600" y2="610" stroke="#B8A888" stroke-width="1"/>
+              <line x1="0" y1="638" x2="600" y2="638" stroke="#B8A888" stroke-width="1"/>
+              <line x1="0" y1="665" x2="600" y2="665" stroke="#B8A888" stroke-width="1"/>
+              <line x1="100" y1="540" x2="40" y2="750" stroke="#B8A888" stroke-width="1" opacity="0.6"/>
+              <line x1="260" y1="540" x2="170" y2="750" stroke="#B8A888" stroke-width="1" opacity="0.5"/>
+              <line x1="420" y1="540" x2="340" y2="750" stroke="#B8A888" stroke-width="1" opacity="0.5"/>
+              <line x1="520" y1="540" x2="460" y2="750" stroke="#B8A888" stroke-width="1" opacity="0.4"/>
+              <!-- Back wall warm plaster -->
+              <rect x="0" y="0" width="600" height="545" fill="#EAE0D2"/>
+              <!-- Skirting board -->
+              <rect x="0" y="530" width="600" height="16" fill="#D4C8B4"/>
+              <!-- Tall sash window left - letting in strong daylight -->
+              <rect x="38" y="50" width="190" height="420" fill="#C8DFF0" rx="3"/>
+              <!-- Window frame -->
+              <rect x="38" y="50" width="190" height="420" fill="none" stroke="#D4C8B4" stroke-width="8" rx="3"/>
+              <line x1="133" y1="50" x2="133" y2="470" stroke="#D4C8B4" stroke-width="6"/>
+              <line x1="38" y1="260" x2="228" y2="260" stroke="#D4C8B4" stroke-width="5"/>
+              <!-- Sky in window top -->
+              <rect x="46" y="58" width="81" height="196" fill="#D4EAF8"/>
+              <rect x="137" y="58" width="83" height="196" fill="#D8ECF8"/>
+              <!-- Garden / exterior view lower -->
+              <rect x="46" y="268" width="81" height="194" fill="#8FB870"/>
+              <rect x="137" y="268" width="83" height="194" fill="#98C478"/>
+              <!-- Garden detail -->
+              <ellipse cx="80" cy="340" rx="28" ry="35" fill="#78A858"/>
+              <ellipse cx="105" cy="360" rx="22" ry="28" fill="#6A9848"/>
+              <ellipse cx="175" cy="330" rx="30" ry="38" fill="#80B060"/>
+              <ellipse cx="195" cy="358" rx="18" ry="22" fill="#70A050"/>
+              <!-- Sunlight flood from window onto floor -->
+              <polygon points="38,470 228,470 300,545 0,545" fill="#E8D4A0" opacity="0.45"/>
+              <polygon points="38,260 228,260 260,380 0,380" fill="#F0E0B0" opacity="0.2"/>
+              <!-- Coving / cornice -->
+              <rect x="0" y="30" width="600" height="22" fill="#EAE0D2"/>
+              <rect x="0" y="50" width="600" height="6" fill="#D8CEC0"/>
+              <!-- Wall panelling right section -->
+              <rect x="260" y="55" width="330" height="480" fill="#ECE2D4"/>
+              <rect x="275" y="75" width="300" height="448" fill="none" stroke="#DDD3C4" stroke-width="1.5" rx="2"/>
+              <rect x="290" y="95" width="270" height="200" fill="none" stroke="#DDD3C4" stroke-width="1" rx="1"/>
+              <rect x="290" y="310" width="270" height="200" fill="none" stroke="#DDD3C4" stroke-width="1" rx="1"/>
+              <!-- Sofa warm linen -->
+              <rect x="140" y="440" width="380" height="110" rx="10" fill="#C8B89A"/>
+              <rect x="140" y="432" width="380" height="28" rx="8" fill="#D4C4A4"/>
+              <!-- Cushions -->
+              <rect x="152" y="395" width="108" height="72" rx="8" fill="#D0C0A0"/>
+              <rect x="270" y="395" width="108" height="72" rx="8" fill="#C8B898"/>
+              <rect x="390" y="395" width="118" height="72" rx="8" fill="#D0C0A0"/>
+              <!-- Sofa legs -->
+              <rect x="155" y="545" width="14" height="16" rx="3" fill="#A89878"/>
+              <rect x="492" y="545" width="14" height="16" rx="3" fill="#A89878"/>
+              <!-- Coffee table light oak -->
+              <rect x="188" y="516" width="276" height="10" rx="4" fill="#C4A878"/>
+              <rect x="215" y="526" width="6" height="32" fill="#B49868"/>
+              <rect x="430" y="526" width="6" height="32" fill="#B49868"/>
+              <!-- Table item: art book + small plant -->
+              <rect x="275" y="505" width="60" height="10" rx="1" fill="#A89060" transform="rotate(-2 275 510)"/>
+              <ellipse cx="360" cy="510" rx="14" ry="14" fill="#98B878"/>
+              <ellipse cx="360" cy="500" rx="8" ry="10" fill="#78A058"/>
+              <!-- Floor lamp warm brass -->
+              <rect x="56" y="265" width="5" height="220" fill="#B89858"/>
+              <ellipse cx="58" cy="263" rx="24" ry="9" fill="#D4B870"/>
+              <ellipse cx="58" cy="255" rx="18" ry="7" fill="#E0C878"/>
+              <!-- Lamp shade glow warm -->
+              <ellipse cx="58" cy="245" rx="35" ry="30" fill="#F0D890" opacity="0.35"/>
+              <ellipse cx="58" cy="280" rx="55" ry="50" fill="#F0D890" opacity="0.15"/>
+              <rect x="45" y="478" width="28" height="7" rx="3" fill="#B89858"/>
+              <!-- Pendant light brass -->
+              <line x1="440" y1="0" x2="440" y2="80" stroke="#C4A870" stroke-width="3"/>
+              <ellipse cx="440" cy="92" rx="36" ry="14" fill="#C8A860"/>
+              <ellipse cx="440" cy="86" rx="30" ry="10" fill="#D4B868"/>
+              <!-- Pendant warm glow -->
+              <ellipse cx="440" cy="110" rx="70" ry="35" fill="#F0D080" opacity="0.3"/>
+              <ellipse cx="440" cy="160" rx="130" ry="70" fill="#F0D080" opacity="0.12"/>
+              <!-- Smart wall panel - Lutron style -->
+              <rect x="504" y="295" width="30" height="52" rx="5" fill="#E0D8CC"/>
+              <rect x="507" y="298" width="24" height="46" rx="4" fill="#EAE2D6"/>
+              <!-- Panel buttons -->
+              <rect x="511" y="303" width="16" height="3" rx="1.5" fill="#B8A890"/>
+              <rect x="511" y="310" width="12" height="3" rx="1.5" fill="#C4B8A0"/>
+              <rect x="511" y="317" width="14" height="3" rx="1.5" fill="#B8A890"/>
+              <circle cx="519" cy="332" r="4" fill="#C4A882" opacity="0.7"/>
+              <circle cx="519" cy="332" r="2" fill="#C4A882"/>
+              <!-- Artwork on wall -->
+              <rect x="295" y="105" width="120" height="80" rx="2" fill="#D4C8B4"/>
+              <rect x="300" y="110" width="110" height="70" rx="1" fill="#C8A878" opacity="0.6"/>
+              <ellipse cx="355" cy="145" rx="30" ry="22" fill="#B89858" opacity="0.5"/>
+              <!-- Sunlight on wall warm glow -->
+              <ellipse cx="100" cy="300" rx="60" ry="120" fill="#F8F0D0" opacity="0.25"/>
+              <!-- Floor sunlight pool -->
+              <ellipse cx="160" cy="590" rx="120" ry="35" fill="#E8D090" opacity="0.4"/>
+              <!-- Caption bar -->
+              <rect x="0" y="692" width="600" height="58" fill="rgba(60,50,35,0.7)"/>
+              <text x="24" y="727" font-family="Georgia,serif" font-size="14" font-style="italic" font-weight="300" fill="rgba(250,245,235,0.92)" letter-spacing="0.04em">Belgravia residence &#183; 2024</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="wrap">
+      <div class="stats-inner">
+        <div class="stat-item reveal"><span class="stat-num">140+</span><span class="stat-label">Projects completed</span></div>
+        <div class="stat-item reveal reveal-delay-1"><span class="stat-num">12</span><span class="stat-label">Years in London</span></div>
+        <div class="stat-item reveal reveal-delay-2"><span class="stat-num">98%</span><span class="stat-label">Client satisfaction</span></div>
+        <div class="stat-item reveal reveal-delay-3"><span class="stat-num">5</span><span class="stat-label">CEDIA awards</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services overview -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">What we do</span>
+        <h2 class="h-section">Technology that<br>disappears into the home.</h2>
+        <p class="subhead" style="margin-top:20px">Every system we design is built around one principle: invisible until you need it, and effortless when you do.</p>
+      </div>
+      <div class="services-home-grid reveal">
+        <div class="svc-card" onclick="showPage('smart-control')">
+          <span class="svc-num">01</span>
+          <div class="svc-title">Smart home control</div>
+          <p class="svc-desc">Everything your home does, from one place. One tap, one scene, one moment of control.</p>
+          <span class="svc-link">Learn more &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('smart-lighting')">
+          <span class="svc-num">02</span>
+          <div class="svc-title">Smart lighting</div>
+          <p class="svc-desc">Light that changes with the moment — automatically. Lutron-certified installation.</p>
+          <span class="svc-link">Learn more &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('multiroom-audio')">
+          <span class="svc-num">03</span>
+          <div class="svc-title">Multiroom audio</div>
+          <p class="svc-desc">Your music, in every room, exactly as it should sound. Invisible speakers. Every streaming service.</p>
+          <span class="svc-link">Learn more &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('home-cinema')">
+          <span class="svc-num">04</span>
+          <div class="svc-title">Home cinema</div>
+          <p class="svc-desc">A cinema room that's genuinely better than the cinema. 4K, Dolby Atmos, acoustic treatment.</p>
+          <span class="svc-link">Learn more &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('networking')">
+          <span class="svc-num">05</span>
+          <div class="svc-title">Secure networking</div>
+          <p class="svc-desc">Fast, reliable internet in every corner of your home. The foundation everything else runs on.</p>
+          <span class="svc-link">Learn more &nbsp;→</span>
+        </div>
+        <div class="svc-card" style="cursor:default;background:var(--surface)" onclick="showPage('about')">
+          <span class="svc-num" style="opacity:.3">—</span>
+          <div class="svc-title">About Luxe Technology</div>
+          <p class="svc-desc">A small team, on purpose. Every project managed personally from first conversation to final handover.</p>
+          <span class="svc-link">Our story &nbsp;→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-surface">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">What our clients say</span>
+        <h2 class="h-section">Trusted by homeowners,<br>architects and designers.</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card reveal">
+          <span class="testi-mark">"</span>
+          <p class="testi-text">The networking infrastructure they designed has been flawless. Every other trade on site commented on the quality of the cabling. I've specified them on four projects now — never a single snag.</p>
+          <div class="testi-divider"></div>
+          <span class="testi-name">James Hartley</span>
+          <span class="testi-role">Architect · Chelsea</span>
+        </div>
+        <div class="testi-card reveal reveal-delay-1">
+          <span class="testi-mark">"</span>
+          <p class="testi-text">They understood from day one that the technology had to serve the interior, not the other way around. Our clients were blown away — and so were we.</p>
+          <div class="testi-divider"></div>
+          <span class="testi-name">Sarah Morreau</span>
+          <span class="testi-role">Interior designer · Knightsbridge</span>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <span class="testi-mark">"</span>
+          <p class="testi-text">The cinema room is genuinely better than any commercial screen I've been to. The whole process — from first meeting to the night we watched our first film — was completely effortless.</p>
+          <div class="testi-divider"></div>
+          <span class="testi-name">Mr &amp; Mrs Thornton</span>
+          <span class="testi-role">Homeowner · Kensington</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-dark">
+    <div class="wrap">
+      <div class="cta-dark-inner reveal">
+        <span class="eyebrow">Ready when you are</span>
+        <h2 class="cta-h">Tell us about<br>your project.</h2>
+        <p class="cta-sub">Whether you're at the early design stage or about to break ground, the best time to talk is now. We respond within one working day.</p>
+        <form class="cta-form" onsubmit="handleFormSubmit(event)">
+          <input class="cta-input" type="email" placeholder="Your email address" required aria-label="Your email address"/>
+          <button class="cta-submit" type="submit">Get in touch</button>
+        </form>
+        <p class="cta-micro">No obligation. No sales pressure. Just a straightforward conversation.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: SERVICES OVERVIEW
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-services">
+  <section class="service-hero">
+    <div class="wrap">
+      <span class="eyebrow">What we do</span>
+      <h1 class="h-display" style="max-width:640px;margin-bottom:24px">Five services.<br>One seamless home.</h1>
+      <p class="subhead">We design and install every layer of technology in a high-end London home — from the infrastructure in the walls to the interface in your hand.</p>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section class="section">
+    <div class="wrap">
+      <div class="services-home-grid reveal">
+        <div class="svc-card" onclick="showPage('smart-control')">
+          <span class="svc-num">01</span>
+          <div class="svc-title">Smart home control</div>
+          <p class="svc-desc">Everything your home does, controlled from one beautifully simple interface. Lighting, audio, heating, security — unified.</p>
+          <span class="svc-link">View service &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('smart-lighting')">
+          <span class="svc-num">02</span>
+          <div class="svc-title">Smart lighting</div>
+          <p class="svc-desc">Lutron-certified smart lighting design and installation. The right light, in every room, at exactly the right time.</p>
+          <span class="svc-link">View service &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('multiroom-audio')">
+          <span class="svc-num">03</span>
+          <div class="svc-title">Multiroom audio</div>
+          <p class="svc-desc">Whole-home music through invisible in-ceiling speakers. Every streaming service. Every room. Total control.</p>
+          <span class="svc-link">View service &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('home-cinema')">
+          <span class="svc-num">04</span>
+          <div class="svc-title">Home cinema</div>
+          <p class="svc-desc">Dedicated cinema rooms with 4K projection, Dolby Atmos surround sound, and acoustic treatment built into the walls.</p>
+          <span class="svc-link">View service &nbsp;→</span>
+        </div>
+        <div class="svc-card" onclick="showPage('networking')">
+          <span class="svc-num">05</span>
+          <div class="svc-title">Secure networking</div>
+          <p class="svc-desc">Structured cabling and enterprise-grade Wi-Fi that gives every room fast, stable, secure connectivity.</p>
+          <span class="svc-link">View service &nbsp;→</span>
+        </div>
+        <div class="svc-card" style="background:var(--surface);cursor:default">
+          <span style="font-family:var(--font-d);font-size:14px;font-style:italic;font-weight:300;color:var(--muted);line-height:1.8;display:block;margin-top:40px">"If you're not sure which service you need — or whether you need all of them — the answer is always the same: call us first. We'll design around your brief, not around our catalogue."</span>
+          <div style="margin-top:24px">
+            <button class="btn btn-dark" onclick="showPage('contact')">Start a conversation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-dark">
+    <div class="wrap">
+      <div class="cta-dark-inner reveal">
+        <span class="eyebrow">Work with us</span>
+        <h2 class="cta-h">Every project starts with a conversation.</h2>
+        <p class="cta-sub">Tell us about your home, your project, and what matters most to you. We'll do the rest.</p>
+        <button class="btn btn-accent" onclick="showPage('contact')">Book a free consultation</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-services -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: SMART HOME CONTROL
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-smart-control">
+  <section class="service-hero">
+    <div class="wrap">
+      <div class="service-hero-inner">
+        <div>
+          <span class="eyebrow">Service 01</span>
+          <h1 class="h-display" style="margin-bottom:24px">Everything your home does,<br>from one place.</h1>
+          <p class="subhead" style="margin-bottom:36px">A smart home control system ties all the technology in your home together so they all work as one. Instead of ten different apps and remote controls, you get a single, beautifully simple interface.</p>
+          <button class="btn btn-dark" onclick="showPage('contact')">Book a consultation</button>
+        </div>
+        <div class="service-hero-img">
+          <svg width="100%" height="100%" viewBox="0 0 700 467" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Smart home control panel in a luxury London property" role="img">
+            <rect width="700" height="467" fill="#EDE6DA"/>
+            <rect x="0" y="320" width="700" height="147" fill="#C8B898"/>
+            <line x1="0" y1="340" x2="700" y2="340" stroke="#B8A880" stroke-width="1.5"/>
+            <line x1="0" y1="368" x2="700" y2="368" stroke="#B8A880" stroke-width="1"/>
+            <line x1="0" y1="396" x2="700" y2="396" stroke="#B8A880" stroke-width="1"/>
+            <line x1="0" y1="424" x2="700" y2="424" stroke="#B8A880" stroke-width="1"/>
+            <line x1="150" y1="320" x2="80" y2="467" stroke="#B8A880" stroke-width="1" opacity="0.6"/>
+            <line x1="350" y1="320" x2="250" y2="467" stroke="#B8A880" stroke-width="1" opacity="0.5"/>
+            <line x1="550" y1="320" x2="460" y2="467" stroke="#B8A880" stroke-width="1" opacity="0.5"/>
+            <rect x="0" y="0" width="700" height="325" fill="#EDE6DA"/>
+            <rect x="0" y="0" width="700" height="20" fill="#E8E0D0"/>
+            <rect x="0" y="18" width="700" height="5" fill="#D8D0C0"/>
+            <rect x="40" y="30" width="220" height="275" fill="#B8D8F0" rx="3"/>
+            <rect x="40" y="30" width="220" height="275" fill="none" stroke="#D8D0C0" stroke-width="8" rx="3"/>
+            <line x1="150" y1="30" x2="150" y2="305" stroke="#D8D0C0" stroke-width="6"/>
+            <line x1="40" y1="168" x2="260" y2="168" stroke="#D8D0C0" stroke-width="5"/>
+            <rect x="48" y="38" width="96" height="124" fill="#D0E8F8"/>
+            <rect x="154" y="38" width="98" height="124" fill="#D8EEF8"/>
+            <rect x="48" y="176" width="96" height="121" fill="#90C060"/>
+            <rect x="154" y="176" width="98" height="121" fill="#98C868"/>
+            <ellipse cx="80" cy="70" rx="28" ry="14" fill="rgba(255,255,255,0.7)"/>
+            <ellipse cx="150" cy="62" rx="22" ry="11" fill="rgba(255,255,255,0.6)"/>
+            <ellipse cx="200" cy="78" rx="24" ry="12" fill="rgba(255,255,255,0.6)"/>
+            <polygon points="40,305 260,305 310,325 0,325" fill="#E8D8A8" opacity="0.5"/>
+            <rect x="295" y="25" width="370" height="300" fill="#EAE2D4"/>
+            <rect x="310" y="45" width="340" height="268" fill="none" stroke="#DDD4C4" stroke-width="1.5" rx="2"/>
+            <rect x="325" y="65" width="310" height="110" fill="none" stroke="#DDD4C4" stroke-width="1" rx="1"/>
+            <rect x="325" y="188" width="310" height="110" fill="none" stroke="#DDD4C4" stroke-width="1" rx="1"/>
+            <rect x="390" y="72" width="158" height="225" rx="10" fill="#F5F2EE"/>
+            <rect x="390" y="72" width="158" height="225" fill="none" stroke="#C4B8A8" stroke-width="1.5" rx="10"/>
+            <rect x="400" y="85" width="138" height="98" rx="5" fill="#1A2840"/>
+            <rect x="410" y="95" width="28" height="18" rx="3" fill="#C4A882" opacity="0.9"/>
+            <rect x="445" y="95" width="28" height="18" rx="3" fill="#C4A882" opacity="0.45"/>
+            <rect x="480" y="95" width="28" height="18" rx="3" fill="#C4A882" opacity="0.45"/>
+            <rect x="410" y="119" width="28" height="18" rx="3" fill="#C4A882" opacity="0.45"/>
+            <rect x="445" y="119" width="28" height="18" rx="3" fill="#4A8AC4" opacity="0.9"/>
+            <rect x="480" y="119" width="28" height="18" rx="3" fill="#C4A882" opacity="0.45"/>
+            <rect x="410" y="143" width="28" height="18" rx="3" fill="#C4A882" opacity="0.45"/>
+            <rect x="445" y="143" width="28" height="18" rx="3" fill="#C4A882" opacity="0.45"/>
+            <rect x="480" y="143" width="28" height="18" rx="3" fill="#C4A882" opacity="0.8"/>
+            <text x="469" y="202" font-family="Georgia,serif" font-size="20" fill="#C4A882" text-anchor="middle" letter-spacing="2" opacity="0.95">19:42</text>
+            <circle cx="420" cy="240" r="12" fill="#E8E0D0" stroke="#C4B8A8" stroke-width="1"/>
+            <circle cx="469" cy="240" r="12" fill="#C4A882" opacity="0.85" stroke="#B49870" stroke-width="1"/>
+            <circle cx="518" cy="240" r="12" fill="#E8E0D0" stroke="#C4B8A8" stroke-width="1"/>
+            <rect x="408" y="262" width="106" height="5" rx="2.5" fill="#D8D0C4"/>
+            <rect x="408" y="262" width="66" height="5" rx="2.5" fill="#C4A882"/>
+            <circle cx="474" cy="264" r="7" fill="#C4A882" stroke="#B49060" stroke-width="1"/>
+            <rect x="400" y="274" width="138" height="14" rx="3" fill="#F0EBE4"/>
+            <rect x="402" y="276" width="42" height="10" rx="2" fill="#C4A882" opacity="0.5"/>
+            <rect x="450" y="276" width="42" height="10" rx="2" fill="#E0D8CC"/>
+            <rect x="498" y="276" width="36" height="10" rx="2" fill="#E0D8CC"/>
+            <rect x="566" y="152" width="90" height="135" rx="8" fill="#F5F2EE"/>
+            <rect x="566" y="152" width="90" height="135" fill="none" stroke="#C4B8A8" stroke-width="1.2" rx="8"/>
+            <rect x="574" y="162" width="74" height="50" rx="4" fill="#1A2840"/>
+            <text x="611" y="192" font-family="Georgia,serif" font-size="14" fill="#E8D080" text-anchor="middle">22&#176;C</text>
+            <circle cx="611" cy="242" r="21" fill="none" stroke="#C4A882" stroke-width="2" opacity="0.5"/>
+            <circle cx="611" cy="242" r="13" fill="none" stroke="#C4A882" stroke-width="3" opacity="0.7"/>
+            <circle cx="611" cy="242" r="5" fill="#C4A882"/>
+            <rect x="0" y="295" width="330" height="40" rx="4" fill="#D4C8B0"/>
+            <rect x="585" y="300" width="115" height="32" rx="4" fill="#D4C8B0"/>
+            <rect x="0" y="415" width="700" height="52" fill="rgba(60,50,35,0.65)"/>
+            <text x="24" y="448" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(250,245,235,0.92)" letter-spacing="0.04em">Smart home control &#183; Mayfair residence</text>
+          </svg>
+          <div class="img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">What it is</span>
+        <h2 class="h-section service-h2">What smart home automation<br>actually means</h2>
+        <div class="service-body">
+          <p>Automation doesn't mean your home runs itself. It means your home remembers what you prefer and handles the routine without you having to think about it.</p>
+          <p>One tap turns the lights down, starts your favourite playlist, and locks the front door. One scene called "leaving" does in a second what used to take five minutes. The technology stays out of sight until you need it, then gets out of the way again.</p>
+          <p>We design systems that feel effortless because they've been properly thought through — not because they're complicated.</p>
+        </div>
+      </div>
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">Who it's for</span>
+        <h2 class="h-section service-h2">The ideal client for this service</h2>
+        <div class="service-body">
+          <p>Most of our clients are in the middle of a significant renovation or new build. They've invested carefully in every other decision and want the technology to match that standard.</p>
+          <p>We also work directly with architects and interior designers who specify us on behalf of their clients. We engage at design stage, provide full technical documentation, and integrate with the wider project team from first fix through to handover.</p>
+          <p>If you're not sure whether you're at the right stage to call us — you almost certainly are. Earlier is always better.</p>
+        </div>
+        <div class="service-benefits">
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Single interface</div><div class="benefit-text">One app, one panel, or one voice command controls every system in the home.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Designed around you</div><div class="benefit-text">Every scene and schedule is set up around how you actually live, not a default template.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Expandable</div><div class="benefit-text">Start with the rooms you use most. Add more zones, more systems, more automation later.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Invisible by design</div><div class="benefit-text">Controls are flush-mounted and discreet. Technology serves the interior, not the other way around.</div></div>
+        </div>
+      </div>
+      <div class="service-content-block reveal" style="text-align:center;border-top:1px solid var(--border);padding-top:60px">
+        <span class="eyebrow">Next step</span>
+        <h2 class="h-section" style="margin-bottom:16px">Tell us how you live, and we'll design a system around it.</h2>
+        <p class="subhead" style="margin:0 auto 36px">No obligation. Just a straightforward conversation about your project.</p>
+        <button class="btn btn-dark" onclick="showPage('contact')">Book a free consultation</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /smart-control -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: SMART LIGHTING
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-smart-lighting">
+  <section class="service-hero">
+    <div class="wrap">
+      <div class="service-hero-inner">
+        <div>
+          <span class="eyebrow">Service 02 · Lutron certified</span>
+          <h1 class="h-display" style="margin-bottom:24px">Light that changes<br>with the moment —<br>automatically.</h1>
+          <p class="subhead" style="margin-bottom:36px">Smart lighting gives you complete control over how every room feels — warm and low in the evening, bright and energising in the morning, gone entirely when a room is empty.</p>
+          <button class="btn btn-dark" onclick="showPage('contact')">Request a lighting consultation</button>
+        </div>
+        <div class="service-hero-img">
+          <svg width="100%" height="100%" viewBox="0 0 700 467" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Smart lighting scene in a luxury London dining room" role="img">
+            <rect width="700" height="467" fill="#EDE4D4"/>
+            <rect x="0" y="300" width="700" height="167" fill="#C4B08C"/>
+            <line x1="0" y1="318" x2="700" y2="318" stroke="#B4A07C" stroke-width="1.5"/>
+            <line x1="0" y1="340" x2="700" y2="340" stroke="#B4A07C" stroke-width="1"/>
+            <line x1="0" y1="365" x2="700" y2="365" stroke="#B4A07C" stroke-width="1"/>
+            <line x1="0" y1="392" x2="700" y2="392" stroke="#B4A07C" stroke-width="1"/>
+            <line x1="0" y1="420" x2="700" y2="420" stroke="#B4A07C" stroke-width="1"/>
+            <rect x="0" y="0" width="700" height="305" fill="#EDE4D4"/>
+            <rect x="0" y="0" width="700" height="22" fill="#E8DDD0"/>
+            <rect x="0" y="20" width="700" height="6" fill="#D8D0C0"/>
+            <rect x="0" y="26" width="120" height="280" fill="#E8DFD0"/>
+            <rect x="8" y="36" width="100" height="260" fill="none" stroke="#D8D0C0" stroke-width="1.2" rx="2"/>
+            <rect x="16" y="50" width="84" height="100" fill="none" stroke="#D8D0C0" stroke-width="1" rx="1"/>
+            <rect x="16" y="165" width="84" height="100" fill="none" stroke="#D8D0C0" stroke-width="1" rx="1"/>
+            <rect x="580" y="26" width="120" height="280" fill="#E8DFD0"/>
+            <rect x="584" y="36" width="100" height="260" fill="none" stroke="#D8D0C0" stroke-width="1.2" rx="2"/>
+            <rect x="590" y="50" width="84" height="100" fill="none" stroke="#D8D0C0" stroke-width="1" rx="1"/>
+            <rect x="590" y="165" width="84" height="100" fill="none" stroke="#D8D0C0" stroke-width="1" rx="1"/>
+            <line x1="210" y1="0" x2="210" y2="52" stroke="#B89040" stroke-width="3"/>
+            <line x1="350" y1="0" x2="350" y2="38" stroke="#B89040" stroke-width="3"/>
+            <line x1="490" y1="0" x2="490" y2="52" stroke="#B89040" stroke-width="3"/>
+            <ellipse cx="210" cy="62" rx="32" ry="12" fill="#C8A040"/>
+            <ellipse cx="210" cy="55" rx="26" ry="9" fill="#D4B048"/>
+            <ellipse cx="350" cy="48" rx="32" ry="12" fill="#C8A040"/>
+            <ellipse cx="350" cy="41" rx="26" ry="9" fill="#D4B048"/>
+            <ellipse cx="490" cy="62" rx="32" ry="12" fill="#C8A040"/>
+            <ellipse cx="490" cy="55" rx="26" ry="9" fill="#D4B048"/>
+            <ellipse cx="210" cy="100" rx="95" ry="70" fill="#F8E080" opacity="0.55"/>
+            <ellipse cx="210" cy="185" rx="140" ry="100" fill="#F8E080" opacity="0.22"/>
+            <ellipse cx="350" cy="84" rx="95" ry="70" fill="#F8E080" opacity="0.6"/>
+            <ellipse cx="350" cy="175" rx="150" ry="105" fill="#F8E080" opacity="0.25"/>
+            <ellipse cx="490" cy="100" rx="95" ry="70" fill="#F8E080" opacity="0.55"/>
+            <ellipse cx="490" cy="185" rx="140" ry="100" fill="#F8E080" opacity="0.22"/>
+            <rect x="90" y="300" width="520" height="18" rx="4" fill="#E0D8CC"/>
+            <rect x="90" y="300" width="520" height="18" fill="none" stroke="#C8C0B0" stroke-width="1"/>
+            <rect x="130" y="318" width="14" height="90" rx="3" fill="#C8B898"/>
+            <rect x="556" y="318" width="14" height="90" rx="3" fill="#C8B898"/>
+            <ellipse cx="210" cy="298" rx="28" ry="10" fill="#E8E0D4"/>
+            <ellipse cx="210" cy="295" rx="18" ry="18" fill="#F0EBE4" stroke="#DDD5C8" stroke-width="1"/>
+            <ellipse cx="350" cy="298" rx="28" ry="10" fill="#E8E0D4"/>
+            <ellipse cx="350" cy="295" rx="18" ry="18" fill="#F0EBE4" stroke="#DDD5C8" stroke-width="1"/>
+            <ellipse cx="490" cy="298" rx="28" ry="10" fill="#E8E0D4"/>
+            <ellipse cx="490" cy="295" rx="18" ry="18" fill="#F0EBE4" stroke="#DDD5C8" stroke-width="1"/>
+            <line x1="270" y1="295" x2="270" y2="272" stroke="#C0B8B0" stroke-width="1.2"/>
+            <ellipse cx="270" cy="270" rx="10" ry="13" fill="none" stroke="#C0B8B0" stroke-width="1.2"/>
+            <line x1="430" y1="295" x2="430" y2="272" stroke="#C0B8B0" stroke-width="1.2"/>
+            <ellipse cx="430" cy="270" rx="10" ry="13" fill="none" stroke="#C0B8B0" stroke-width="1.2"/>
+            <rect x="98" y="255" width="100" height="52" rx="6" fill="#CEC0A8"/>
+            <rect x="498" y="255" width="100" height="52" rx="6" fill="#CEC0A8"/>
+            <rect x="340" y="268" width="22" height="26" rx="2" fill="#98A880"/>
+            <ellipse cx="348" cy="262" rx="12" ry="10" fill="#E8A0A0"/>
+            <ellipse cx="358" cy="258" rx="10" ry="9" fill="#F0B0B0"/>
+            <ellipse cx="340" cy="260" rx="9" ry="8" fill="#E898A0"/>
+            <rect x="556" y="145" width="26" height="90" rx="5" fill="#F0EBE4"/>
+            <rect x="556" y="145" width="26" height="90" fill="none" stroke="#C4B8A8" stroke-width="1" rx="5"/>
+            <rect x="560" y="152" width="18" height="3" rx="1.5" fill="#C4B090"/>
+            <rect x="560" y="160" width="14" height="3" rx="1.5" fill="#C4B090"/>
+            <rect x="560" y="168" width="16" height="3" rx="1.5" fill="#C4B090"/>
+            <circle cx="569" cy="196" r="5" fill="#C4A882" opacity="0.9"/>
+            <circle cx="569" cy="196" r="2.5" fill="#C4A882"/>
+            <ellipse cx="210" cy="380" rx="105" ry="32" fill="#F8E080" opacity="0.2"/>
+            <ellipse cx="350" cy="370" rx="125" ry="38" fill="#F8E080" opacity="0.25"/>
+            <ellipse cx="490" cy="380" rx="105" ry="32" fill="#F8E080" opacity="0.2"/>
+            <rect x="0" y="415" width="700" height="52" fill="rgba(60,50,35,0.65)"/>
+            <text x="24" y="448" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(250,245,235,0.92)" letter-spacing="0.04em">Lutron smart lighting &#183; Richmond dining room</text>
+          </svg>
+          <div class="img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">The difference</span>
+        <h2 class="h-section service-h2">What smart lighting does that<br>a dimmer switch cannot</h2>
+        <div class="service-body">
+          <p>A standard dimmer gives you one variable in one room. Smart lighting gives you complete control of every room, every fitting, and every moment — coordinated, automatic, and consistent.</p>
+          <p>Your lighting changes with the time of day without you touching a switch. When you sit down to watch a film, the living room dims to exactly the right level. When you leave the house, every light turns off in a single tap. When you return in the evening, the hallway welcomes you at the right warmth before you've opened the door.</p>
+          <p>These aren't features. They're just the way a well-designed home should behave.</p>
+        </div>
+      </div>
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">Our recommendation</span>
+        <h2 class="h-section service-h2">Lutron lighting — the standard<br>we recommend most</h2>
+        <div class="service-body">
+          <p>Lutron is widely regarded as the most reliable and refined smart lighting system available for residential use. It has been installed in more high-end homes worldwide than any other system, and for good reason — it is exceptionally well engineered, intuitive to use, and built to last.</p>
+          <p>We are Lutron-certified installers. That means we've been trained directly by Lutron and can design a lighting scheme that meets the technical requirements of the most demanding projects.</p>
+          <p>Lutron integrates seamlessly with the other systems in your home — audio, blinds, heating, and control. It becomes part of how your whole home works.</p>
+        </div>
+        <div class="service-benefits">
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Lutron certified</div><div class="benefit-text">Factory-trained installation by accredited specialists.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Design stage support</div><div class="benefit-text">Full lighting layout drawings and schedules for your architect.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Energy savings</div><div class="benefit-text">Automatic control means lights are never left on unnecessarily.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Fully integrated</div><div class="benefit-text">Works with your wider smart home, audio, blinds, and security.</div></div>
+        </div>
+      </div>
+      <div class="service-content-block reveal" style="text-align:center;border-top:1px solid var(--border);padding-top:60px">
+        <span class="eyebrow">Next step</span>
+        <h2 class="h-section" style="margin-bottom:16px">Lighting decisions made at design stage are the easiest ones to get right.</h2>
+        <p class="subhead" style="margin:0 auto 36px">Let's talk about your project before the walls go up.</p>
+        <button class="btn btn-dark" onclick="showPage('contact')">Request a smart lighting consultation</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /smart-lighting -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: MULTIROOM AUDIO
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-multiroom-audio">
+  <section class="service-hero">
+    <div class="wrap">
+      <div class="service-hero-inner">
+        <div>
+          <span class="eyebrow">Service 03</span>
+          <h1 class="h-display" style="margin-bottom:24px">Great sound in<br>every room,<br>without the clutter.</h1>
+          <p class="subhead" style="margin-bottom:36px">Multiroom audio means your music is wherever you are — through speakers built into the walls and ceilings, connected to every streaming service you use, and controlled from your phone or a panel on the wall.</p>
+          <button class="btn btn-dark" onclick="showPage('contact')">Arrange a demonstration</button>
+        </div>
+        <div class="service-hero-img">
+          <svg width="100%" height="100%" viewBox="0 0 700 467" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Flush in-ceiling multiroom audio speakers in a luxury living room" role="img">
+            <rect width="700" height="467" fill="#EDE8E0"/>
+            <rect x="0" y="0" width="700" height="190" fill="#F4F0E8"/>
+            <rect x="0" y="185" width="700" height="10" fill="#E0D8CC"/>
+            <rect x="0" y="193" width="700" height="4" fill="#D4CCBC"/>
+            <rect x="0" y="197" width="700" height="270" fill="#EDE4D4"/>
+            <rect x="0" y="204" width="700" height="4" fill="#DDD4C4"/>
+            <rect x="0" y="210" width="700" height="180" fill="#EAE2D2"/>
+            <rect x="30" y="218" width="640" height="164" fill="none" stroke="#DDD4C4" stroke-width="1.5" rx="2"/>
+            <rect x="48" y="232" width="285" height="135" fill="none" stroke="#DDD4C4" stroke-width="1" rx="1"/>
+            <rect x="368" y="232" width="285" height="135" fill="none" stroke="#DDD4C4" stroke-width="1" rx="1"/>
+            <rect x="0" y="392" width="700" height="75" fill="#C4B494"/>
+            <line x1="0" y1="410" x2="700" y2="410" stroke="#B4A484" stroke-width="1.5"/>
+            <line x1="0" y1="432" x2="700" y2="432" stroke="#B4A484" stroke-width="1"/>
+            <ellipse cx="220" cy="95" rx="70" ry="70" fill="#E4E0D8"/>
+            <ellipse cx="220" cy="95" rx="66" ry="66" fill="#EEEBE4" stroke="#C8C0B4" stroke-width="2"/>
+            <ellipse cx="220" cy="95" rx="56" ry="56" fill="#E8E4DC" stroke="#C4BDB4" stroke-width="1.5"/>
+            <ellipse cx="220" cy="95" rx="40" ry="40" fill="#E0DCD4"/>
+            <line x1="160" y1="95" x2="280" y2="95" stroke="#B8B0A8" stroke-width="1.2" opacity="0.9"/>
+            <line x1="220" y1="35" x2="220" y2="155" stroke="#B8B0A8" stroke-width="1.2" opacity="0.9"/>
+            <line x1="177" y1="52" x2="263" y2="138" stroke="#B8B0A8" stroke-width="1" opacity="0.7"/>
+            <line x1="263" y1="52" x2="177" y2="138" stroke="#B8B0A8" stroke-width="1" opacity="0.7"/>
+            <line x1="163" y1="70" x2="277" y2="120" stroke="#B8B0A8" stroke-width="0.8" opacity="0.55"/>
+            <line x1="163" y1="120" x2="277" y2="70" stroke="#B8B0A8" stroke-width="0.8" opacity="0.55"/>
+            <circle cx="220" cy="95" r="10" fill="#D4CEC8"/>
+            <circle cx="220" cy="95" r="5" fill="#C0BAB4"/>
+            <circle cx="220" cy="95" r="20" fill="none" stroke="#C0BAB4" stroke-width="0.9" opacity="0.6"/>
+            <circle cx="220" cy="95" r="30" fill="none" stroke="#C0BAB4" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="220" cy="95" r="78" fill="none" stroke="#C4A882" stroke-width="2" opacity="0.5"/>
+            <circle cx="220" cy="95" r="93" fill="none" stroke="#C4A882" stroke-width="1.5" opacity="0.32"/>
+            <circle cx="220" cy="95" r="108" fill="none" stroke="#C4A882" stroke-width="1" opacity="0.2"/>
+            <ellipse cx="520" cy="75" rx="52" ry="52" fill="#EAE6DE" stroke="#C4BDB4" stroke-width="1.5"/>
+            <ellipse cx="520" cy="75" rx="43" ry="43" fill="#E4E0D8" stroke="#BCBAB0" stroke-width="1"/>
+            <ellipse cx="520" cy="75" rx="30" ry="30" fill="#DDD9D0"/>
+            <line x1="472" y1="75" x2="568" y2="75" stroke="#B8B0A8" stroke-width="1.1" opacity="0.8"/>
+            <line x1="520" y1="27" x2="520" y2="123" stroke="#B8B0A8" stroke-width="1.1" opacity="0.8"/>
+            <line x1="486" y1="41" x2="554" y2="109" stroke="#B8B0A8" stroke-width="0.9" opacity="0.6"/>
+            <line x1="554" y1="41" x2="486" y2="109" stroke="#B8B0A8" stroke-width="0.9" opacity="0.6"/>
+            <circle cx="520" cy="75" r="8" fill="#CCC8C2"/>
+            <circle cx="520" cy="75" r="4" fill="#C0BCB6"/>
+            <circle cx="520" cy="75" r="58" fill="none" stroke="#C4A882" stroke-width="1.2" opacity="0.35"/>
+            <circle cx="520" cy="75" r="70" fill="none" stroke="#C4A882" stroke-width="0.9" opacity="0.22"/>
+            <text x="220" y="178" font-family="Georgia,serif" font-size="10" fill="#A09890" text-anchor="middle" letter-spacing="1.5">IN-CEILING SPEAKER</text>
+            <rect x="460" y="355" width="240" height="45" rx="4" fill="#C8B898"/>
+            <rect x="460" y="355" width="240" height="9" rx="3" fill="#D4C4A4"/>
+            <rect x="472" y="364" width="60" height="28" rx="2" fill="#B8A888"/>
+            <rect x="538" y="364" width="60" height="28" rx="2" fill="#BCA890"/>
+            <rect x="604" y="364" width="85" height="28" rx="2" fill="#B8A888"/>
+            <rect x="476" y="342" width="12" height="22" rx="1" fill="#8A7860" transform="rotate(-4 476 353)"/>
+            <rect x="492" y="340" width="12" height="24" rx="1" fill="#A08870" transform="rotate(2 492 352)"/>
+            <rect x="507" y="341" width="14" height="23" rx="1" fill="#907060" transform="rotate(-1 507 352)"/>
+            <rect x="558" y="344" width="16" height="20" rx="3" fill="#8A9070"/>
+            <ellipse cx="566" cy="338" rx="14" ry="12" fill="#78A858"/>
+            <ellipse cx="572" cy="332" rx="10" ry="10" fill="#68984A"/>
+            <ellipse cx="559" cy="334" rx="9" ry="9" fill="#70A052"/>
+            <rect x="638" y="260" width="28" height="96" rx="5" fill="#F0EBE4"/>
+            <rect x="638" y="260" width="28" height="96" fill="none" stroke="#C4B8A8" stroke-width="1" rx="5"/>
+            <rect x="642" y="268" width="20" height="3" rx="1.5" fill="#C4B0A0"/>
+            <rect x="642" y="276" width="14" height="3" rx="1.5" fill="#C4B0A0"/>
+            <rect x="642" y="284" width="18" height="3" rx="1.5" fill="#C4B0A0"/>
+            <circle cx="652" cy="322" r="6" fill="#C4A882" opacity="0.9"/>
+            <circle cx="652" cy="322" r="3" fill="#C4A882"/>
+            <rect x="0" y="415" width="700" height="52" fill="rgba(60,50,35,0.65)"/>
+            <text x="24" y="448" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(250,245,235,0.92)" letter-spacing="0.04em">In-ceiling multiroom audio &#183; Knightsbridge</text>
+          </svg>
+          <div class="img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">How it works</span>
+        <h2 class="h-section service-h2">How a multiroom audio<br>system works</h2>
+        <div class="service-body">
+          <p>Every room in the system has its own amplified zone. Each zone can play something different, or you can group rooms together to share one source. The kitchen plays a podcast. The garden plays the same album as the living room. The bedroom has its own playlist entirely.</p>
+          <p>You control everything from one app, or from small, elegantly designed keypads on the wall. The system connects to Spotify, Apple Music, Tidal, internet radio, and anything else you already use. There's no new subscription, no new platform to learn.</p>
+          <p>The speakers themselves are invisible — flush-mounted into the ceiling or wall, painted to match the room, and heard rather than seen.</p>
+        </div>
+      </div>
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">The brands we install</span>
+        <h2 class="h-section service-h2">From Sonos to Linn — we specify<br>what's right for your home</h2>
+        <div class="service-body">
+          <p>We work with the full spectrum of multiroom audio systems, from accessible and highly capable platforms to the finest high-fidelity systems available.</p>
+          <p>For most homes, Sonos forms an excellent foundation — reliable, intuitive, and genuinely good-sounding. For clients who want more — greater resolution, better amplification, richer stereo imaging — we install systems from Linn, Naim, and Bluesound.</p>
+          <p>Every recommendation we make is based on what suits the project, not what we happen to stock. We'll always explain the difference in plain language and let you decide.</p>
+        </div>
+        <div class="service-benefits">
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Invisible installation</div><div class="benefit-text">In-ceiling and in-wall speakers, flush-mounted and painted to match.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Every streaming service</div><div class="benefit-text">Spotify, Apple Music, Tidal, internet radio — all from one app.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Zone independence</div><div class="benefit-text">Every room can play something different, or share a source. Your choice.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Smart home ready</div><div class="benefit-text">Music responds to your scenes, your arrival, and your schedule.</div></div>
+        </div>
+      </div>
+      <div class="service-content-block reveal" style="text-align:center;border-top:1px solid var(--border);padding-top:60px">
+        <span class="eyebrow">Next step</span>
+        <h2 class="h-section" style="margin-bottom:16px">The best way to understand what a properly installed system sounds like is to hear one.</h2>
+        <p class="subhead" style="margin:0 auto 36px">We'll arrange a demonstration at a reference installation near you.</p>
+        <button class="btn btn-dark" onclick="showPage('contact')">Arrange a multiroom audio consultation</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /multiroom-audio -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: HOME CINEMA
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-home-cinema">
+  <section class="service-hero">
+    <div class="wrap">
+      <div class="service-hero-inner">
+        <div>
+          <span class="eyebrow">Service 04</span>
+          <h1 class="h-display" style="margin-bottom:24px">A cinema room<br>that's genuinely<br>better than the cinema.</h1>
+          <p class="subhead" style="margin-bottom:36px">We design and build dedicated home cinema rooms from scratch — the screen, the sound, the seating, the lighting, and the acoustic treatment that ties it all together.</p>
+          <button class="btn btn-dark" onclick="showPage('contact')">Start your cinema room conversation</button>
+        </div>
+        <div class="service-hero-img">
+          <svg width="100%" height="100%" viewBox="0 0 700 467" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Dedicated home cinema room with projection screen and luxury seating" role="img">
+            <rect width="700" height="467" fill="#28241E"/>
+            <rect x="0" y="20" width="72" height="380" fill="#312C24"/>
+            <rect x="8" y="35" width="56" height="90" rx="3" fill="#38322A"/>
+            <rect x="8" y="138" width="56" height="90" rx="3" fill="#38322A"/>
+            <rect x="8" y="242" width="56" height="90" rx="3" fill="#38322A"/>
+            <rect x="628" y="20" width="72" height="380" fill="#312C24"/>
+            <rect x="636" y="35" width="56" height="90" rx="3" fill="#38322A"/>
+            <rect x="636" y="138" width="56" height="90" rx="3" fill="#38322A"/>
+            <rect x="636" y="242" width="56" height="90" rx="3" fill="#38322A"/>
+            <rect x="72" y="18" width="556" height="355" rx="4" fill="#1E1C18"/>
+            <rect x="72" y="18" width="556" height="355" fill="none" stroke="#403828" stroke-width="10" rx="4"/>
+            <rect x="82" y="28" width="536" height="335" fill="#1A2C48"/>
+            <rect x="82" y="28" width="536" height="160" fill="#2A4060"/>
+            <rect x="82" y="150" width="536" height="50" fill="#3A5878"/>
+            <ellipse cx="350" cy="130" rx="180" ry="120" fill="#E8C860" opacity="0.22"/>
+            <ellipse cx="350" cy="105" rx="100" ry="80" fill="#F0D880" opacity="0.24"/>
+            <ellipse cx="180" cy="80" rx="70" ry="30" fill="#3A5A80" opacity="0.7"/>
+            <ellipse cx="240" cy="68" rx="55" ry="24" fill="#446688" opacity="0.6"/>
+            <ellipse cx="500" cy="90" rx="65" ry="28" fill="#3A5A80" opacity="0.7"/>
+            <ellipse cx="450" cy="75" rx="50" ry="22" fill="#446688" opacity="0.6"/>
+            <rect x="82" y="180" width="536" height="18" fill="#E8A030" opacity="0.45"/>
+            <rect x="82" y="190" width="536" height="10" fill="#F0B840" opacity="0.35"/>
+            <path d="M82 278 Q200 218 300 238 Q400 258 500 223 Q580 208 618 228 L618 363 L82 363 Z" fill="#141210"/>
+            <rect x="82" y="288" width="536" height="75" fill="#1A2C40"/>
+            <ellipse cx="350" cy="305" rx="160" ry="20" fill="#2A4858" opacity="0.6"/>
+            <ellipse cx="350" cy="375" rx="300" ry="55" fill="#2A5888" opacity="0.55"/>
+            <ellipse cx="350" cy="415" rx="320" ry="58" fill="#204868" opacity="0.38"/>
+            <ellipse cx="350" cy="450" rx="340" ry="58" fill="#1A3858" opacity="0.22"/>
+            <rect x="55" y="378" width="118" height="62" rx="6" fill="#48403A"/>
+            <rect x="55" y="370" width="118" height="22" rx="5" fill="#564E46"/>
+            <rect x="182" y="378" width="118" height="62" rx="6" fill="#48403A"/>
+            <rect x="182" y="370" width="118" height="22" rx="5" fill="#564E46"/>
+            <rect x="308" y="378" width="118" height="62" rx="6" fill="#48403A"/>
+            <rect x="308" y="370" width="118" height="22" rx="5" fill="#564E46"/>
+            <rect x="434" y="378" width="118" height="62" rx="6" fill="#48403A"/>
+            <rect x="434" y="370" width="118" height="22" rx="5" fill="#564E46"/>
+            <rect x="560" y="378" width="88" height="62" rx="6" fill="#443C36"/>
+            <rect x="560" y="370" width="88" height="22" rx="5" fill="#504840"/>
+            <rect x="55" y="370" width="118" height="8" rx="4" fill="#2A5888" opacity="0.5"/>
+            <rect x="182" y="370" width="118" height="8" rx="4" fill="#2A5888" opacity="0.5"/>
+            <rect x="308" y="370" width="118" height="8" rx="4" fill="#2A5888" opacity="0.5"/>
+            <rect x="434" y="370" width="118" height="8" rx="4" fill="#2A5888" opacity="0.5"/>
+            <rect x="48" y="366" width="5" height="24" rx="2" fill="#C4A882" opacity="0.85"/>
+            <rect x="48" y="394" width="5" height="24" rx="2" fill="#C4A882" opacity="0.65"/>
+            <rect x="649" y="366" width="5" height="24" rx="2" fill="#C4A882" opacity="0.85"/>
+            <rect x="649" y="394" width="5" height="24" rx="2" fill="#C4A882" opacity="0.65"/>
+            <rect x="0" y="415" width="700" height="52" fill="rgba(20,18,14,0.8)"/>
+            <text x="24" y="448" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(250,245,235,0.92)" letter-spacing="0.04em">Dedicated cinema room &#183; Chelsea basement</text>
+          </svg>
+          <div class="img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">What goes into it</span>
+        <h2 class="h-section service-h2">What goes into a<br>home cinema room</h2>
+        <div class="service-body">
+          <p>Every cinema room we build is designed from the structure outward. Acoustic isolation keeps sound where it belongs and stops it travelling to the rest of the house. Internal absorption panels control how sound behaves inside the room — reducing echo, sharpening dialogue, and ensuring every seat is a good seat.</p>
+          <p>The screen and projection system is specified for the size and geometry of the room, not chosen from a catalogue. We use 4K laser projection, high-gain screens, and Dolby Atmos surround sound configured precisely for the space.</p>
+          <p>Seating, lighting, and control are all part of the brief. The moment you press play, the lights dim, the screen reveals itself, and the room does the rest.</p>
+        </div>
+      </div>
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">Where to put it</span>
+        <h2 class="h-section service-h2">Finding the right space<br>in your home</h2>
+        <div class="service-body">
+          <p>The best home cinema rooms tend to be in spaces that can be fully enclosed — basements, loft conversions, and outbuildings are ideal. We can also create excellent cinema spaces within existing rooms, particularly where a dedicated media room already exists but has never been treated acoustically.</p>
+          <p>We'll assess any space you're considering and give you an honest view of what it can achieve. Some rooms lend themselves naturally to exceptional results. Others need more work. We'll tell you the difference before any commitment is made.</p>
+        </div>
+        <div class="service-benefits">
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">4K laser projection</div><div class="benefit-text">Sharper, more detailed image than any commercial cinema.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Dolby Atmos sound</div><div class="benefit-text">Immersive surround sound calibrated precisely for the room.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Acoustic treatment</div><div class="benefit-text">Built into the walls. Every seat is the best seat in the house.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">One-button control</div><div class="benefit-text">Simple enough for every member of the family, every time.</div></div>
+        </div>
+      </div>
+      <div class="service-content-block reveal" style="text-align:center;border-top:1px solid var(--border);padding-top:60px">
+        <span class="eyebrow">Next step</span>
+        <h2 class="h-section" style="margin-bottom:16px">Every cinema room begins with a conversation about how you want to use it.</h2>
+        <p class="subhead" style="margin:0 auto 36px">Tell us about your space and your brief. We'll take it from there.</p>
+        <button class="btn btn-dark" onclick="showPage('contact')">Start your home cinema conversation</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /home-cinema -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: NETWORKING
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-networking">
+  <section class="service-hero">
+    <div class="wrap">
+      <div class="service-hero-inner">
+        <div>
+          <span class="eyebrow">Service 05</span>
+          <h1 class="h-display" style="margin-bottom:24px">Fast, reliable internet<br>in every corner<br>of your home.</h1>
+          <p class="subhead" style="margin-bottom:36px">Everything in a modern home runs on the network. If the network isn't right, nothing else works properly. We fix that — properly, from the infrastructure up.</p>
+          <button class="btn btn-dark" onclick="showPage('contact')">Book a free network survey</button>
+        </div>
+        <div class="service-hero-img">
+          <svg width="100%" height="100%" viewBox="0 0 700 467" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Structured cabling and network rack installation in a London property" role="img">
+            <rect width="700" height="467" fill="#E8E4DC"/>
+            <rect x="0" y="0" width="700" height="50" fill="#F0EDE6"/>
+            <rect x="80" y="18" width="540" height="8" rx="4" fill="#F8F5EE"/>
+            <ellipse cx="350" cy="28" rx="280" ry="30" fill="#FFF8E8" opacity="0.5"/>
+            <rect x="0" y="50" width="700" height="370" fill="#E4E0D8"/>
+            <rect x="0" y="390" width="700" height="77" fill="#CCCAC4"/>
+            <line x1="0" y1="410" x2="700" y2="410" stroke="#C0BEB8" stroke-width="1.5"/>
+            <line x1="0" y1="432" x2="700" y2="432" stroke="#C0BEB8" stroke-width="1.5"/>
+            <line x1="175" y1="390" x2="175" y2="467" stroke="#C0BEB8" stroke-width="1"/>
+            <line x1="350" y1="390" x2="350" y2="467" stroke="#C0BEB8" stroke-width="1"/>
+            <line x1="525" y1="390" x2="525" y2="467" stroke="#C0BEB8" stroke-width="1"/>
+            <rect x="0" y="50" width="700" height="22" fill="#D8D4CC"/>
+            <rect x="0" y="70" width="700" height="4" fill="#C8C4BC"/>
+            <line x1="0" y1="56" x2="700" y2="56" stroke="#C4A882" stroke-width="3" opacity="0.65"/>
+            <line x1="0" y1="61" x2="700" y2="61" stroke="#7090C0" stroke-width="2.5" opacity="0.6"/>
+            <line x1="0" y1="65" x2="700" y2="65" stroke="#80A870" stroke-width="2.5" opacity="0.55"/>
+            <line x1="0" y1="58" x2="700" y2="58" stroke="#A06848" stroke-width="2" opacity="0.45"/>
+            <rect x="220" y="80" width="260" height="310" rx="6" fill="#D8D4CC"/>
+            <rect x="220" y="80" width="260" height="310" fill="none" stroke="#B0ACA4" stroke-width="3" rx="6"/>
+            <rect x="228" y="88" width="14" height="294" fill="#C8C4BC"/>
+            <rect x="458" y="88" width="14" height="294" fill="#C8C4BC"/>
+            <rect x="242" y="96" width="216" height="30" rx="3" fill="#F0EDE6"/>
+            <rect x="242" y="96" width="216" height="30" fill="none" stroke="#C0BCB4" stroke-width="1" rx="3"/>
+            <rect x="248" y="104" width="148" height="14" rx="2" fill="#E0DDD6"/>
+            <rect x="254" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="268" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="282" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="296" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="310" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="324" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="338" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="352" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="366" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <rect x="380" y="107" width="10" height="8" rx="1" fill="#A0A8B0"/>
+            <circle cx="406" cy="111" r="3" fill="#50C050" opacity="0.95"/>
+            <circle cx="416" cy="111" r="3" fill="#50C050" opacity="0.85"/>
+            <circle cx="426" cy="111" r="3" fill="#C4A882" opacity="0.95"/>
+            <circle cx="436" cy="111" r="3" fill="#50C050" opacity="0.85"/>
+            <circle cx="446" cy="111" r="3" fill="#5050C0" opacity="0.8"/>
+            <rect x="242" y="132" width="216" height="36" rx="3" fill="#E8E5DE"/>
+            <rect x="242" y="132" width="216" height="36" fill="none" stroke="#C0BCB4" stroke-width="1" rx="3"/>
+            <text x="256" y="150" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#606860" letter-spacing="1.5" font-weight="bold">CISCO MERAKI MS</text>
+            <rect x="256" y="155" width="140" height="6" rx="2" fill="#D0CCC4"/>
+            <rect x="256" y="155" width="85" height="6" rx="2" fill="#50C050" opacity="0.85"/>
+            <circle cx="420" cy="148" r="4" fill="#50C850" opacity="0.95"/>
+            <circle cx="432" cy="148" r="4" fill="#50C850" opacity="0.8"/>
+            <circle cx="444" cy="148" r="4" fill="#C4A882" opacity="0.95"/>
+            <rect x="242" y="174" width="216" height="14" rx="2" fill="#D8D5CE"/>
+            <rect x="242" y="194" width="216" height="30" rx="3" fill="#F0EDE6"/>
+            <rect x="242" y="194" width="216" height="30" fill="none" stroke="#C0BCB4" stroke-width="1" rx="3"/>
+            <rect x="248" y="202" width="148" height="14" rx="2" fill="#E0DDD6"/>
+            <rect x="254" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="268" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="282" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="296" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="310" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="324" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="338" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <rect x="352" y="205" width="10" height="8" rx="1" fill="#909AA0"/>
+            <circle cx="406" cy="209" r="3" fill="#50C050" opacity="0.9"/>
+            <circle cx="416" cy="209" r="3" fill="#50C050" opacity="0.75"/>
+            <circle cx="426" cy="209" r="3" fill="#50C050" opacity="0.9"/>
+            <circle cx="436" cy="209" r="3" fill="#C4A882" opacity="0.85"/>
+            <circle cx="446" cy="209" r="3" fill="#50C050" opacity="0.75"/>
+            <rect x="242" y="230" width="216" height="36" rx="3" fill="#E4E1DA"/>
+            <rect x="242" y="230" width="216" height="36" fill="none" stroke="#C0BCB4" stroke-width="1" rx="3"/>
+            <text x="256" y="248" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#606860" letter-spacing="1.5" font-weight="bold">UBIQUITI DREAM</text>
+            <circle cx="430" cy="248" r="5" fill="#50C050" opacity="0.9"/>
+            <circle cx="444" cy="248" r="5" fill="#5080C0" opacity="0.75"/>
+            <rect x="242" y="272" width="216" height="50" rx="3" fill="#DEDAD4"/>
+            <rect x="242" y="272" width="216" height="50" fill="none" stroke="#C0BCB4" stroke-width="1.5" rx="3"/>
+            <rect x="252" y="282" width="100" height="30" rx="3" fill="#C8C4BC"/>
+            <rect x="252" y="282" width="60" height="30" rx="3" fill="#50C050" opacity="0.28"/>
+            <text x="262" y="301" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#506050">UPS 1500VA</text>
+            <circle cx="370" cy="297" r="8" fill="none" stroke="#C4A882" stroke-width="2" opacity="0.6"/>
+            <circle cx="370" cy="297" r="4" fill="#C4A882" opacity="0.8"/>
+            <path d="M220 111 Q158 111 128 162 Q98 212 68 218" stroke="#C4A882" stroke-width="3.5" fill="none" opacity="0.75"/>
+            <path d="M220 116 Q152 116 120 174 Q88 230 60 236" stroke="#7090C0" stroke-width="3" fill="none" opacity="0.65"/>
+            <path d="M220 121 Q148 121 112 188 Q80 250 52 258" stroke="#80A870" stroke-width="3" fill="none" opacity="0.65"/>
+            <path d="M480 111 Q548 111 574 162 Q602 212 636 220" stroke="#C4A882" stroke-width="3.5" fill="none" opacity="0.75"/>
+            <path d="M480 117 Q550 117 580 176 Q610 232 642 240" stroke="#7090C0" stroke-width="3" fill="none" opacity="0.65"/>
+            <path d="M480 123 X556 123 Q588 190 618 252 L648 260" stroke="#80A870" stroke-width="3" fill="none" opacity="0.65"/>
+            <rect x="0" y="415" width="700" height="52" fill="rgba(60,55,45,0.7)"/>
+            <text x="24" y="448" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(250,245,235,0.92)" letter-spacing="0.04em">Structured cabling &#183; Cisco Meraki &#183; Belgravia</text>
+          </svg>
+          <div class="img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">The foundation</span>
+        <h2 class="h-section service-h2">Structured cabling — the foundation<br>everything else runs on</h2>
+        <div class="service-body">
+          <p>A structured cabling installation means running hardwired network connections to every room that needs them, concealed inside the walls and floors during construction or renovation. It's the equivalent of giving every device in your home a direct, dedicated connection to the network.</p>
+          <p>Wired connections are faster, more stable, and more secure than wireless. They don't suffer interference from neighbouring networks. They don't drop during a video call. They don't buffer during a film.</p>
+          <p>For smart home installations in particular, structured cabling is not optional — it's the foundation that makes everything else perform as it should.</p>
+        </div>
+      </div>
+      <div class="service-content-block reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">Wireless coverage</span>
+        <h2 class="h-section service-h2">Whole-home Wi-Fi for large<br>and complex properties</h2>
+        <div class="service-body">
+          <p>Not every device benefits from a wired connection, and not every space can accommodate one. For wireless coverage, we install enterprise-grade access points — the same hardware used in commercial buildings and hotels — distributed throughout the property.</p>
+          <p>This is significantly different from a mesh Wi-Fi system bought from a high street retailer. Commercial access points are ceiling-mounted, professionally configured, and designed to handle dozens of simultaneous devices without degradation. Most clients don't notice them at all.</p>
+          <p>We use Cisco Meraki and Ubiquiti infrastructure. Both platforms offer remote management capabilities, which means our team can diagnose and resolve most issues without needing to visit the property.</p>
+        </div>
+        <div class="service-benefits">
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">No dead spots</div><div class="benefit-text">Enterprise Wi-Fi in every room, including the garden and outbuildings.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Network security</div><div class="benefit-text">Proper segmentation: smart devices, personal, and guest on separate networks.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Remote support</div><div class="benefit-text">Most issues resolved without a site visit via remote management.</div></div>
+          <div class="benefit-item"><div class="benefit-icon"></div><div class="benefit-title">Future-proof</div><div class="benefit-text">Infrastructure built to handle the next decade of connected devices.</div></div>
+        </div>
+      </div>
+      <div class="service-content-block reveal" style="text-align:center;border-top:1px solid var(--border);padding-top:60px">
+        <span class="eyebrow">Next step</span>
+        <h2 class="h-section" style="margin-bottom:16px">We'll survey your property and tell you exactly what it needs.</h2>
+        <p class="subhead" style="margin:0 auto 36px">No jargon, no upsell — just a clear recommendation.</p>
+        <button class="btn btn-dark" onclick="showPage('contact')">Book a free network survey</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /networking -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <section class="about-hero">
+    <div class="wrap">
+      <div class="about-hero-inner">
+        <div>
+          <span class="eyebrow">Our story</span>
+          <h1 class="h-display" style="margin-bottom:28px">Why we started<br>Luxe Technology.</h1>
+          <div style="max-width:520px">
+            <p class="body-sm" style="margin-bottom:18px">We didn't set out to start a business. We set out to fix something that kept bothering us.</p>
+            <p class="body-sm" style="margin-bottom:18px">For years, working inside the smart home and AV industry, we kept seeing the same thing happen. Clients would invest significantly in their homes — working with talented architects, commissioning thoughtful interior designers, spending years on a renovation — only to have the technology let everything down.</p>
+            <p class="body-sm" style="margin-bottom:18px">Systems that were complicated to use. Installations that looked like an afterthought. Cables that appeared where they shouldn't. Equipment that needed rebooting more often than it worked. And companies that were difficult to reach the moment the job was done.</p>
+            <p class="body-sm">It wasn't that the technology was bad. The technology was extraordinary. The problem was in how it was being delivered. So in 2012, we started Luxe Technology with a single intention: to be the company we wished existed when we were clients ourselves.</p>
+          </div>
+        </div>
+        <div class="about-img-block">
+          <div class="about-img-accent"></div>
+          <div class="about-img">
+            <svg width="100%" height="100%" viewBox="0 0 500 667" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Luxe Technology team working on a smart home project in London" role="img">
+              <!-- Bright warm room -->
+              <rect width="500" height="667" fill="#EBE4D8"/>
+              <!-- Floor warm oak -->
+              <rect x="0" y="440" width="500" height="227" fill="#C4B090"/>
+              <line x1="0" y1="462" x2="500" y2="462" stroke="#B4A080" stroke-width="1.5"/>
+              <line x1="0" y1="488" x2="500" y2="488" stroke="#B4A080" stroke-width="1"/>
+              <line x1="0" y1="515" x2="500" y2="515" stroke="#B4A080" stroke-width="1"/>
+              <line x1="0" y1="545" x2="500" y2="545" stroke="#B4A080" stroke-width="1"/>
+              <line x1="0" y1="578" x2="500" y2="578" stroke="#B4A080" stroke-width="1"/>
+              <line x1="0" y1="614" x2="500" y2="614" stroke="#B4A080" stroke-width="1"/>
+              <!-- Walls bright plaster -->
+              <rect x="0" y="0" width="500" height="445" fill="#EDE6D8"/>
+              <!-- Cornice -->
+              <rect x="0" y="0" width="500" height="22" fill="#E8E0D0"/>
+              <rect x="0" y="20" width="500" height="6" fill="#D8D0C0"/>
+              <!-- Skirting -->
+              <rect x="0" y="428" width="500" height="16" fill="#D8D0C0"/>
+              <!-- Large window - bright daylight flood -->
+              <rect x="55" y="35" width="390" height="290" fill="#C8E0F4" rx="3"/>
+              <rect x="55" y="35" width="390" height="290" fill="none" stroke="#D8D0C4" stroke-width="8" rx="3"/>
+              <line x1="250" y1="35" x2="250" y2="325" stroke="#D8D0C4" stroke-width="6"/>
+              <line x1="55" y1="183" x2="445" y2="183" stroke="#D8D0C4" stroke-width="5"/>
+              <!-- Bright London sky -->
+              <rect x="63" y="43" width="181" height="134" fill="#D8EEF8"/>
+              <rect x="257" y="43" width="180" height="134" fill="#DCF0F8"/>
+              <!-- White clouds bright sky -->
+              <ellipse cx="110" cy="80" rx="40" ry="18" fill="rgba(255,255,255,0.85)"/>
+              <ellipse cx="150" cy="70" rx="32" ry="15" fill="rgba(255,255,255,0.75)"/>
+              <ellipse cx="310" cy="85" rx="38" ry="16" fill="rgba(255,255,255,0.8)"/>
+              <ellipse cx="360" cy="72" rx="28" ry="13" fill="rgba(255,255,255,0.7)"/>
+              <!-- London rooftops / skyline view lower window -->
+              <rect x="63" y="191" width="181" height="126" fill="#A8C8D8"/>
+              <rect x="257" y="191" width="180" height="126" fill="#B0CCD8"/>
+              <!-- Rooftop silhouettes -->
+              <rect x="70" y="250" width="20" height="60" fill="#7898A8"/>
+              <rect x="96" y="240" width="28" height="72" fill="#6888A0"/>
+              <rect x="130" y="255" width="18" height="55" fill="#7898A8"/>
+              <rect x="154" y="245" width="24" height="65" fill="#6888A0"/>
+              <rect x="184" y="258" width="16" height="52" fill="#7898A8"/>
+              <rect x="206" y="248" width="22" height="62" fill="#6888A0"/>
+              <rect x="264" y="252" width="18" height="58" fill="#7898A8"/>
+              <rect x="288" y="242" width="26" height="68" fill="#6888A0"/>
+              <rect x="320" y="256" width="20" height="54" fill="#7898A8"/>
+              <rect x="346" y="246" width="22" height="64" fill="#6888A0"/>
+              <rect x="374" y="260" width="16" height="50" fill="#7898A8"/>
+              <rect x="396" y="250" width="24" height="60" fill="#6888A0"/>
+              <!-- Strong daylight spill onto floor from window -->
+              <polygon points="55,325 445,325 490,445 10,445" fill="#EDE080" opacity="0.3"/>
+              <ellipse cx="250" cy="445" rx="200" ry="30" fill="#F0E090" opacity="0.25"/>
+              <!-- Desk - pale ash wood -->
+              <rect x="30" y="375" width="440" height="70" rx="5" fill="#D4C8AE"/>
+              <rect x="30" y="375" width="440" height="12" rx="4" fill="#DDD0B8"/>
+              <rect x="48" y="445" width="16" height="50" rx="3" fill="#C0B49A"/>
+              <rect x="436" y="445" width="16" height="50" rx="3" fill="#C0B49A"/>
+              <!-- Laptop open on desk -->
+              <rect x="140" y="320" width="170" height="62" rx="5" fill="#D8D2CA"/>
+              <rect x="146" y="326" width="158" height="50" rx="3" fill="#1A2840"/>
+              <!-- Screen content bright and readable -->
+              <rect x="154" y="334" width="80" height="10" rx="2" fill="#C4A882" opacity="0.7"/>
+              <rect x="154" y="348" width="110" height="7" rx="1" fill="#C4A882" opacity="0.4"/>
+              <rect x="154" y="358" width="65" height="7" rx="1" fill="#C4A882" opacity="0.35"/>
+              <!-- Floor plan / technical drawing on desk -->
+              <rect x="330" y="350" width="120" height="85" rx="3" fill="#F5F2EA"/>
+              <rect x="330" y="350" width="120" height="85" fill="none" stroke="#C8C0B0" stroke-width="1" rx="3"/>
+              <!-- Floor plan lines -->
+              <line x1="338" y1="362" x2="442" y2="362" stroke="#8090A0" stroke-width="1"/>
+              <line x1="338" y1="375" x2="442" y2="375" stroke="#8090A0" stroke-width="0.7"/>
+              <rect x="345" y="365" width="38" height="28" rx="1" fill="none" stroke="#8090A0" stroke-width="1"/>
+              <rect x="391" y="365" width="36" height="28" rx="1" fill="none" stroke="#8090A0" stroke-width="1"/>
+              <rect x="345" y="396" width="80" height="28" rx="1" fill="none" stroke="#8090A0" stroke-width="0.8"/>
+              <!-- Pencil on drawing -->
+              <rect x="348" y="412" width="80" height="4" rx="2" fill="#C4A060" transform="rotate(-12 348 414)"/>
+              <!-- Coffee cup -->
+              <ellipse cx="88" cy="372" rx="18" ry="8" fill="#D8CEB8"/>
+              <ellipse cx="88" cy="364" rx="16" ry="16" fill="#E0D6C0"/>
+              <ellipse cx="88" cy="360" rx="11" ry="11" fill="#6A4828"/>
+              <!-- Desk items - ruler, pens -->
+              <rect x="52" y="385" width="3" height="55" rx="1" fill="#8898A0"/>
+              <rect x="58" y="385" width="3" height="55" rx="1" fill="#C4A060"/>
+              <rect x="64" y="385" width="3" height="55" rx="1" fill="#88A080"/>
+              <!-- Small framed photo on wall -->
+              <rect x="28" y="70" width="55" height="42" rx="2" fill="#E0D8C8"/>
+              <rect x="28" y="70" width="55" height="42" fill="none" stroke="#C8C0B0" stroke-width="1.5" rx="2"/>
+              <rect x="33" y="75" width="45" height="32" rx="1" fill="#A8C8D0"/>
+              <!-- Company name / award plaque -->
+              <rect x="420" y="75" width="60" height="42" rx="3" fill="#C4A060" opacity="0.8"/>
+              <text x="450" y="92" font-family="Georgia,serif" font-size="7" fill="#3A2810" text-anchor="middle" letter-spacing="0.5">CEDIA</text>
+              <text x="450" y="103" font-family="Georgia,serif" font-size="6" fill="#3A2810" text-anchor="middle">AWARD</text>
+              <text x="450" y="112" font-family="Georgia,serif" font-size="6" fill="#3A2810" text-anchor="middle">2023</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section section-surface">
+    <div class="wrap">
+      <div class="reveal" style="max-width:800px;margin:0 auto;text-align:center">
+        <span class="accent-line" style="margin:0 auto 24px"></span>
+        <span class="eyebrow">Our mission</span>
+        <blockquote style="font-family:var(--font-d);font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;line-height:1.5;color:var(--dark);margin-bottom:24px">"To make the homes of our clients quieter, more beautiful, and more effortless to live in — by designing technology that serves the life happening inside the home, not the other way around."</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">What we believe in</span>
+        <h2 class="h-section" style="margin-bottom:0">Three values we don't<br>negotiate on.</h2>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <span class="value-num">01</span>
+          <div class="value-title">Invisible is the highest standard.</div>
+          <p class="value-text">If you notice the technology, we haven't done our job properly. Every cable, every speaker, every control panel we specify should feel like it was always meant to be exactly where it is.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">02</span>
+          <div class="value-title">Honesty before the sale earns the relationship after it.</div>
+          <p class="value-text">We will always tell you what we genuinely recommend, not what produces the largest margin for us. If a simpler system does what you need, we'll say so.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">03</span>
+          <div class="value-title">The project isn't finished until you're completely comfortable.</div>
+          <p class="value-text">Handover isn't the end of our responsibility — it's the beginning of it. We don't consider a project complete until the people who live in the home can use every system with total confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="section section-surface">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="accent-line"></span>
+        <span class="eyebrow">Why Luxe Technology</span>
+        <h2 class="h-section">What actually sets us apart —<br>not in the way we'd phrase it in a brochure.</h2>
+      </div>
+      <div class="diff-grid reveal">
+        <div class="diff-item"><div class="diff-title">We come in at design stage.</div><p class="diff-text">Most AV companies are called in at the end of a project, when the decisions that matter most have already been made. We work with architects and interior designers from the beginning — before first fix, before the floor plans are signed off. That's where we add the most value.</p></div>
+        <div class="diff-item"><div class="diff-title">We are technology-agnostic.</div><p class="diff-text">We don't represent a single brand or system. We specify whatever is genuinely right for each project — whether that's Linn, Sonos, Crestron, Control4, Lutron, or Cisco Meraki. Our loyalty is to the outcome, not to a manufacturer's sales target.</p></div>
+        <div class="diff-item"><div class="diff-title">We speak the language of design.</div><p class="diff-text">We understand that in a high-end home, every decision is an aesthetic one. We know the technology has to earn the trust of the design team — because it makes their work look better, not worse. We take that responsibility seriously.</p></div>
+        <div class="diff-item"><div class="diff-title">We are a small team, on purpose.</div><p class="diff-text">We take on a limited number of projects each year so that every client gets the full attention of our senior team. The person who walks your property at the start is the same person who commissions the system at the end.</p></div>
+        <div class="diff-item"><div class="diff-title">We are still there when something needs attention.</div><p class="diff-text">Every installation we complete is backed by a support plan, and we remain available to our clients long after the project is done. Technology evolves. How you use your home changes. We're here for both.</p></div>
+        <div class="diff-item" style="background:var(--dark);border-color:var(--dark);padding:28px">
+          <div class="diff-title" style="color:var(--bg);font-family:var(--font-d);font-size:19px;margin-bottom:10px">Ready to work together?</div>
+          <p style="font-size:14px;color:rgba(250,250,248,.5);line-height:1.75;margin-bottom:24px">We'd be very glad to hear about your project. No commitment, no agenda — just a conversation.</p>
+          <button class="btn btn-accent" onclick="showPage('contact')">Get in touch</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="max-width:680px">
+        <span class="accent-line"></span>
+        <span class="eyebrow">Working with us</span>
+        <h2 class="h-section" style="margin-bottom:28px">Working with us.</h2>
+        <p class="body-sm" style="margin-bottom:18px">We know that inviting a new company into a significant project takes trust. You're making decisions that will affect how your home feels to live in for years to come, and you're doing it with people you may not have worked with before.</p>
+        <p class="body-sm" style="margin-bottom:18px">We will never pressure you. Our first conversation is always a genuine exchange. If we're not the right fit, we'll tell you, and we'll point you in a better direction if we can.</p>
+        <p class="body-sm" style="margin-bottom:18px">We will give you a clear, honest picture of what's involved, what it costs, and what to expect at every stage — before any commitment is made. No surprises, no hidden costs, no scope that quietly grows once the work has started.</p>
+        <p class="body-sm" style="margin-bottom:36px">We've been doing this for over a decade in London. We've worked on listed buildings in Mayfair, new builds in Richmond, apartments in Knightsbridge, and country houses just outside the city. Every project has been different. Every client has trusted us with something that mattered to them. That trust is not something we take lightly.</p>
+        <button class="btn btn-dark" onclick="showPage('contact')">Get in touch with the Luxe Technology team</button>
+      </div>
+    </div>
+  </section>
+</div><!-- /about -->
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <section class="contact-hero">
+    <div class="wrap">
+      <span class="eyebrow">Start a conversation</span>
+      <h1 class="h-display" style="max-width:580px;margin-bottom:20px">Tell us about<br>your project.</h1>
+      <p class="subhead">Whether you're at the early design stage or about to break ground, the best time to speak to us is now. We respond within one working day.</p>
+
+      <div class="contact-grid">
+        <div class="contact-form-wrap reveal">
+          <form onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="name">Your name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="James Hartley" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="james@studio.co.uk" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+44 7700 000000"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="type">I am a</label>
+              <select class="form-select" id="type" name="type">
+                <option value="">Select one</option>
+                <option>Homeowner</option>
+                <option>Architect</option>
+                <option>Interior designer</option>
+                <option>Project manager</option>
+                <option>Developer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">Primary interest</label>
+              <select class="form-select" id="service" name="service">
+                <option value="">Select a service</option>
+                <option>Smart home control</option>
+                <option>Smart lighting</option>
+                <option>Multiroom audio</option>
+                <option>Home cinema</option>
+                <option>Secure networking</option>
+                <option>Full smart home installation</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Tell us about your project</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Brief description of the property, project stage, and what you're hoping to achieve..."></textarea>
+            </div>
+            <button class="btn btn-dark" type="submit" style="width:100%;text-align:center;display:block">Send enquiry</button>
+            <p style="font-size:11px;color:var(--muted);margin-top:14px;letter-spacing:.04em">We respond within one working day. No obligation, no sales pressure.</p>
+          </form>
+        </div>
+
+        <div class="contact-info reveal reveal-delay-1">
+          <div class="contact-info-item">
+            <span class="contact-info-label">Phone</span>
+            <span class="contact-info-val">+44 (0)20 7000 0000</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-label">Email</span>
+            <span class="contact-info-val">hello@luxetechnology.co.uk</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-label">Office</span>
+            <span class="contact-info-val">London, United Kingdom</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-label">Response time</span>
+            <span class="contact-info-val">Within one working day</span>
+          </div>
+          <div class="contact-info-item" style="border-bottom:none">
+            <span class="contact-info-label">For architects &amp; designers</span>
+            <span class="contact-info-val" style="font-size:15px;font-weight:300">We offer specification support, site visits, and full CAD/technical documentation — at no charge to the practice.</span>
+          </div>
+          <div class="contact-promise">
+            <div class="contact-promise-title">Our promise to you</div>
+            <p class="contact-promise-text">We will never pressure you. Our first conversation is always a genuine exchange — we want to understand your project and you want to understand us. If we're not the right fit, we'll tell you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /contact -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer" id="siteFooter">
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-logo" onclick="showPage('home')">Luxe Technology</span>
+      <ul class="footer-links">
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('about')">About</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2025 Luxe Technology Ltd · London</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+// ── PAGE ROUTER ──
+const pages = {
+  'home':           'page-home',
+  'services':       'page-services',
+  'smart-control':  'page-smart-control',
+  'smart-lighting': 'page-smart-lighting',
+  'multiroom-audio':'page-multiroom-audio',
+  'home-cinema':    'page-home-cinema',
+  'networking':     'page-networking',
+  'about':          'page-about',
+  'contact':        'page-contact'
+};
+
+let currentPage = 'home';
+
+function showPage(key) {
+  if (!pages[key]) return;
+  // Hide all
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Show target
+  document.getElementById(pages[key]).classList.add('active');
+  // Scroll to top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  // Update nav active
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('data-page') === key ||
+       (key.includes('smart') || key.includes('audio') || key.includes('cinema') || key.includes('network')) && a.getAttribute('data-page') === 'services') {
+      a.classList.add('active');
+    }
+  });
+  currentPage = key;
+  // Re-run reveal
+  setTimeout(runReveal, 100);
+}
+
+// ── SCROLL EFFECTS ──
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  runReveal();
+});
+
+function runReveal() {
+  document.querySelectorAll('#page-' + (
+    currentPage === 'smart-control' ? 'smart-control' :
+    currentPage === 'smart-lighting' ? 'smart-lighting' :
+    currentPage === 'multiroom-audio' ? 'multiroom-audio' :
+    currentPage === 'home-cinema' ? 'home-cinema' :
+    currentPage === 'networking' ? 'networking' :
+    currentPage
+  ) + ' .reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) el.classList.add('visible');
+  });
+}
+
+// Also watch all active page reveals
+function runAllReveal() {
+  document.querySelectorAll('.page.active .reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) el.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', runAllReveal);
+setTimeout(runAllReveal, 200);
+
+// ── MOBILE MENU ──
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('menuBtn');
+  menu.classList.toggle('open', menuOpen);
+  const spans = btn.querySelectorAll('span');
+  if (menuOpen) {
+    spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+}
+
+// ── FORM HANDLER ──
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"], .cta-submit');
+  const orig = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = 'Message sent — thank you.'; btn.style.background = '#C4A882'; btn.style.borderColor = '#C4A882'; btn.style.color = '#1A1A1A'; }
+  setTimeout(() => {
+    if (btn) { btn.textContent = orig; btn.style.background = ''; btn.style.borderColor = ''; btn.style.color = ''; }
+    e.target.reset();
+  }, 3500);
+}
+
+// Init
+setTimeout(runAllReveal, 100);
+</script>
+</body>
+</html>
